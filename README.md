@@ -1,22 +1,20 @@
-<<<<<<< HEAD
-# tripsee_2.0
+# Tripsee
 
-> A Vue.js project
+Tripsee is a single page app that I'm currently working on that was built with Vue.js. The purpose of the app is to allow the user to search for a destination. They can either search by a city name or the zip code. Afterwards they are presented with data returned from several different API's such as the current weather of that city, some places to eat and things to do there. I have many more features in mind to add on to this along with improving the design and UI/UX.
 
-## Build Setup
+[Live Demo Site](http://joeyui.com/final_twiggle/)
 
-``` bash
-# install dependencies
-npm install
+![Tripsee](https://user-images.githubusercontent.com/3519112/41633964-7cc8b8e4-740f-11e8-9bad-f1959ae1a319.JPG)
+![Tripsee](https://user-images.githubusercontent.com/3519112/41633965-7cd6dc3a-740f-11e8-8939-1bb9cde435a8.JPG)
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Built With
 
-# build for production with minification
-npm run build
-```
+* [Vue.js](https://vuejs.org/)
+* [Webpack](https://webpack.js.org/)
+* [Babel](https://babeljs.io/)
+* [Bulma](https://bulma.io/)
+* Javascript
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
-=======
-# tripsee_v2
->>>>>>> b62d22345008d78a8675b15e42065d420d07f628
+## Authors
+
+* **Joey Leger** - [joey80](https://github.com/joey80)
