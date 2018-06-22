@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container body-container">
     <app-header></app-header>
     <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
     <weatherSection></weatherSection>
@@ -36,8 +36,11 @@
   }
 </script>
 
-<style scoped>
-  .container {
+<style>
+  body {
+    font-family: 'Muli', sans-serif;
+  }
+  .body-container {
     padding: 10px;
   }
 </style>

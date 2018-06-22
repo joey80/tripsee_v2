@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="search-container">
         <form v-on:submit.prevent="logQuery">
             <div class="field">
                 <p class="control has-icons-left">
@@ -88,7 +88,12 @@
 </script>
 
 <style scoped>
-    form {
-        margin-top: 30px;
+    #search {
+        color: #322c49;
+    }
+    #search input[type=text]:focus {
+        border: 0;
+        outline: none;
+        box-shadow: none;
     }
 </style>
