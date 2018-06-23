@@ -89,10 +89,7 @@
 
 <style scoped>
     .search-container {
-        margin-top: 70px;
-    }
-    ::placeholder {
-        color: #717171;
+        margin-top: 10px;
     }
     #search {
         color: #322c49;

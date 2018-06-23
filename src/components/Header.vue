@@ -1,17 +1,17 @@
 <template>
-    <nav class="logo-container navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <div class="tripsee-logo">
-        trip<span class="regular">see</span>
+    <div class="logo-container">
+        <div>
+            <div class="tripsee-logo">
+                trip<span class="light">see</span>
+            </div>
+            <div class="tripsee-subtitle">
+                Discover Your Next Favorite Place
+            </div>
+        </div>
+        <span class="icon tripsee-menu">
+            <i class="fas fa-bars"></i>
+        </span>
     </div>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-</nav>
 </template>
 
 <script>
@@ -21,32 +21,31 @@ export default {
 
 <style scoped>
     .logo-container {
-        background-color: #2d324f;
+        display: flex;
+        padding: 10px 20px 0 20px;
+        justify-content: space-between;
+        align-items: center;
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;
-        font-size: 2.5em;
-        color: #fff;
-        padding-left: 20px;
+        font-size: 2.8em;
+        color: #7fa953;
     }
     .tripsee-subtitle {
-        padding-left: 5px;
         transform: translateY(-2px);
         font-family: 'Muli', sans-serif;
-        font-size: 0.6em;
+        font-size: 0.8em;
         color: #a6a9b9;
         font-weight: bold;
         font-style: italic;
     }
     .tripsee-menu {
-        transform: translateY(-50px);
+        color: #7fa953;
+        font-size: 1.3em;
     }
-    .regular {
+    .light {
         font-family: 'Muli', sans-serif;
-        color: #ff4f3e;
+        color: #ade16d;
         font-size: 0.9em;
-    }
-    .navbar-burger {
-        color: #ff4f3e;
     }
 </style>

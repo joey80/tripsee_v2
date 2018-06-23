@@ -1,14 +1,25 @@
 <template>
     <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">
-                Current Weather in {{ weather.name }}
-            </p>
-        </header>
-        <div class="card-content">
-            <div class="content">
-                <p class="title is-2">{{ weather.temp }}&#176;</p>
-                <p class="subtitle is-5">{{ weather.description }}</p>
+        <div class="card-footer">
+            <div class="card-footer-item dark">
+                ICON
+            </div>
+            <div class="card-footer-item light">
+                <div class="item-center">
+                    <span class="temp">{{ weather.temp }}&#176;</span>
+                    <span class="name">Currently {{ weather.description }}<br />in {{ weather.name }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="card-footer-item">                
+                <p class="subtitle is-5">DAY 1</p>
+            </div>
+            <div class="card-footer-item">                
+                <p class="subtitle is-5">DAY 2</p>
+            </div>
+            <div class="card-footer-item">                
+                <p class="subtitle is-5">DAY 3</p>
             </div>
         </div>
     </div>
@@ -64,6 +75,32 @@
 
 <style scoped>
     .card {
-        margin: 50px 0 30px 0;
+        margin: 30px 0 30px 0;
+    }
+    .dark {
+        background-color: #7fa953;
+        color: #fff;
+        border: 0;
+        flex-grow: 2;
+    }
+    .light {
+        background-color: #ade16d;
+        color: #494949;
+        border: 0;
+        flex-grow: 4;
+    }
+    .temp {
+        display: block;
+        font-size: 3.5em;
+    }
+    .name {
+        display: block;
+        line-height: 1.2em;
+    }
+    .item-center {
+        text-align: center;
+    }
+    .card-footer-item {
+        border: 0;
     }
 </style>
