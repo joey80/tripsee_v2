@@ -88,6 +88,9 @@
 </script>
 
 <style scoped>
+    .search-container {
+        margin-top: 100px;
+    }
     #search {
         color: #322c49;
     }

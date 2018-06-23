@@ -1,15 +1,17 @@
 <template>
-  <div class="container body-container">
+  <div class="container">
     <app-header></app-header>
-    <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
-    <weatherSection></weatherSection>
-    <placeSection></placeSection>
-    <eventSection></eventSection>
-    <!-- <div class="row">
-      <div class="col-xs-12">
-        <router-view></router-view>
-      </div>
-    </div> -->
+    <div class="body-container">
+      <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
+      <weatherSection></weatherSection>
+      <placeSection></placeSection>
+      <eventSection></eventSection>
+      <!-- <div class="row">
+        <div class="col-xs-12">
+          <router-view></router-view>
+        </div>
+      </div> -->
+    </div>
   </div>
 </template>
 

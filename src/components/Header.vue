@@ -1,9 +1,9 @@
 <template>
-    <div class="logo-container">
-        <p class="title is-1 tripsee-logo"><span class="dark-green">Trip</span><span class="light-green">see</span></p>
-        <span class="subtitle is-5 tripsee-subtitle">Discover Your Next Favorite Place</span>
-        <!-- <p class="subtitle is-4">Discover The World</p> -->
-        <!-- <router-link to="/">Home</router-link> | <router-link to="/weather">Weather</router-link> | <router-link to="/places">Places</router-link> | <router-link to="/events">Events</router-link> -->
+    <div class="logo-container navbar is-fixed-top">
+        <div class="navbar-item">
+                <span class="tripsee-logo">Tripsee</span>
+                <span class="tripsee-subtitle">Discover Your Next Favorite Place</span>
+        </div>
     </div>
 </template>
 
@@ -14,22 +14,32 @@ export default {
 
 <style scoped>
     .logo-container {
-        padding: 30px 30px 0 10px;
+        padding: 10px 0 0 0;
+        background-color: #2d324f;
+        text-align: center;
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;
+        font-size: 2em;
+        color: #fff;
+        display: block;
     }
     .tripsee-subtitle {
         display: inline-block;
         padding-left: 5px;
-        transform: translateY(-20px);
+        transform: translateY(-8px);
         font-family: 'Muli', sans-serif;
-        font-size: 0.8em;
+        font-size: 0.7em;
+        color: #a6a9b9;
+        font-weight: bold;
+        font-style: italic;
     }
-    .dark-green {
-        color: #124c14;
+    .tripsee-menu {
+        transform: translateY(-50px);
+        border: 1px solid #fff;
     }
-    .light-green {
-        color: #5abb5d;
+    .navbar {
+        border: 1px solid #fff;
+        padding: 0;
     }
 </style>
