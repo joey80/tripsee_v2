@@ -1,8 +1,10 @@
 <template>
     <div class="logo-container navbar is-fixed-top">
         <div class="navbar-item">
+            <div>
                 <span class="tripsee-logo">Tripsee</span>
                 <span class="tripsee-subtitle">Discover Your Next Favorite Place</span>
+            </div>
         </div>
     </div>
 </template>
@@ -17,6 +19,7 @@ export default {
         padding: 10px 0 0 0;
         background-color: #2d324f;
         text-align: center;
+        justify-content: center;
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;
@@ -25,9 +28,9 @@ export default {
         display: block;
     }
     .tripsee-subtitle {
-        display: inline-block;
+        display: block;
         padding-left: 5px;
-        transform: translateY(-8px);
+        transform: translateY(-2px);
         font-family: 'Muli', sans-serif;
         font-size: 0.7em;
         color: #a6a9b9;
@@ -36,10 +39,8 @@ export default {
     }
     .tripsee-menu {
         transform: translateY(-50px);
-        border: 1px solid #fff;
     }
     .navbar {
-        border: 1px solid #fff;
         padding: 0;
     }
 </style>
