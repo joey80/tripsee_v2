@@ -3,7 +3,7 @@
         <form v-on:submit.prevent="logQuery" autocomplete="off">
             <div class="field">
                 <p class="control has-icons-left">
-                    <input v-model="query" id="search" class="input  is-medium" placeholder="Where Would You Like To Go?">
+                    <input v-model="query" id="search" class="input" placeholder="Where Would You Like To Go?">
                     <span class="icon is-small is-left">
                     <i class="fas fa-search"></i>
                     </span>
@@ -91,7 +91,7 @@
     .search-container {
         margin-top: 90px;
         padding: 20px 0 20px 0;
-        box-shadow: 0px 21px 25px -4px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     }
     ::placeholder {
         color: #717171;

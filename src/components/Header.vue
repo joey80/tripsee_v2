@@ -2,7 +2,7 @@
     <div class="logo-container navbar is-fixed-top">
         <div class="navbar-item">
             <div>
-                <span class="tripsee-logo">Trip</span><span class="regular">see</span>
+                <span class="tripsee-logo">Tripsee</span>
                 <span class="tripsee-subtitle">Discover Your Next Favorite Place</span>
             </div>
         </div>
@@ -22,7 +22,7 @@ export default {
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;
-        font-size: 1.8em;
+        font-size: 1.5em;
         color: #fff;
         display: inline-block;
     }
