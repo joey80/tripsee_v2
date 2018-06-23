@@ -24,7 +24,7 @@
             <option value="Restaurants">Restaurants</option>
             <option value="Shopping">Shopping</option>
         </select> -->
-        <p class="subtitle is-4">Places To Eat</p>
+        <p class="subtitle is-4">Places To See</p>
         <div v-for="place in places" :key="place.id" class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
