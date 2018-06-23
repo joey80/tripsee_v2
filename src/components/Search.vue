@@ -80,7 +80,6 @@
 
                     // Emit the new event that the location has changed
                     eventBus.$emit('newLocation', state.location);
-                    console.log('from search', state);
                 });
             });         
         }

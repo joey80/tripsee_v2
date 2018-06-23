@@ -2,11 +2,11 @@
     <div class="card">
         <div class="card-footer">
             <div class="card-footer-item dark">
-                ICON
+                <img :src="'../src/assets/weather/' + weather.icon + '.png'">
             </div>
             <div class="card-footer-item light">
                 <div class="item-center">
-                    <span class="temp">{{ weather.temp }}&#176;</span>
+                    <span class="temp">{{ Math.floor(weather.temp) }}&#176;</span>
                     <span class="name">Currently {{ weather.description }}<br />in {{ weather.name }}</span>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                 const state = JSON.parse(localStorage.getItem('state'));
                 this.location = state.location;
                 this.weather = state.weather;
-            }
+            };
         },
         mounted() {
             eventBus.$on('newLocation', (location) => {
@@ -56,11 +56,13 @@
                     this.temp = response.data.currently.temperature;
                     this.description = response.data.currently.summary;
                     this.name = location.cityName;
+                    this.icon = response.data.currently.icon;
 
                     state.weather = {
                         temp: this.temp,
                         description: this.description,
-                        name: this.name
+                        name: this.name,
+                        icon: this.icon
                     }
 
                     this.weather = state.weather;
