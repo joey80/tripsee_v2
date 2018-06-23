@@ -1,9 +1,9 @@
 <template>
-    <div class="search-container card">
+    <div class="search-container">
         <form v-on:submit.prevent="logQuery" autocomplete="off">
             <div class="field">
                 <p class="control has-icons-left">
-                    <input v-model="query" id="search" class="input" placeholder="Where Would You Like To Go?">
+                    <input v-model="query" id="search" class="input is-medium is-rounded" placeholder="Where Would You Like To Go?">
                     <span class="icon is-small is-left">
                     <i class="fas fa-search"></i>
                     </span>
@@ -89,17 +89,13 @@
 
 <style scoped>
     .search-container {
-        margin-top: 90px;
-        padding: 20px 0 20px 0;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        margin-top: 70px;
     }
     ::placeholder {
         color: #717171;
     }
     #search {
         color: #322c49;
-        border: 0;
-        box-shadow: none;
     }
     #search input[type=text]:focus {
         border: 0;

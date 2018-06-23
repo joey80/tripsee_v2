@@ -1,12 +1,17 @@
 <template>
-    <div class="logo-container navbar is-fixed-top">
-        <div class="navbar-item">
-            <div>
-                <span class="tripsee-logo">Tripsee</span>
-                <span class="tripsee-subtitle">Discover Your Next Favorite Place</span>
-            </div>
-        </div>
+    <nav class="logo-container navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <div class="tripsee-logo">
+        trip<span class="regular">see</span>
     </div>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
 </template>
 
 <script>
@@ -17,17 +22,14 @@ export default {
 <style scoped>
     .logo-container {
         background-color: #2d324f;
-        text-align: center;
-        justify-content: center;
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;
-        font-size: 1.5em;
+        font-size: 2.5em;
         color: #fff;
-        display: inline-block;
+        padding-left: 20px;
     }
     .tripsee-subtitle {
-        display: block;
         padding-left: 5px;
         transform: translateY(-2px);
         font-family: 'Muli', sans-serif;
@@ -39,12 +41,12 @@ export default {
     .tripsee-menu {
         transform: translateY(-50px);
     }
-    .navbar {
-        padding: 0;
-    }
     .regular {
         font-family: 'Muli', sans-serif;
         color: #ff4f3e;
-        font-size: 1.7em;
+        font-size: 0.9em;
+    }
+    .navbar-burger {
+        color: #ff4f3e;
     }
 </style>

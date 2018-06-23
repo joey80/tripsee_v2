@@ -63,10 +63,7 @@
 </script>
 
 <style scoped>
-    header {
-        margin-top: 50px;
-    }
     .card {
-        margin-bottom: 30px;
+        margin: 50px 0 30px 0;
     }
 </style>
