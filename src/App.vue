@@ -41,6 +41,7 @@
 <style>
   body {
     font-family: 'Muli', sans-serif;
+    background-color: #f8f8f8;
   }
   .body-container {
     padding: 10px;
