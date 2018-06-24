@@ -3,7 +3,7 @@
         <form v-on:submit.prevent="logQuery" autocomplete="off">
             <div class="field">
                 <p class="control has-icons-left">
-                    <input v-model="query" id="search" class="input is-medium is-rounded" placeholder="Where Would You Like To Go?">
+                    <input v-model="query" id="search" class="input is-medium is-rounded" placeholder="Enter A City Name Or A Zipcode">
                     <span class="icon is-small is-left">
                     <i class="fas fa-search"></i>
                     </span>

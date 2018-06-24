@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="places-container">
         <!-- <select v-model="locationType" v-on:change="getPlaces">
             <option value="Active Life">Active Life</option>
             <option value="Arts & Entertainment">Arts & Entertainment</option>
@@ -24,7 +24,7 @@
             <option value="Restaurants">Restaurants</option>
             <option value="Shopping">Shopping</option>
         </select> -->
-        <p class="subtitle is-4">Places To See</p>
+        <span class="tag is-dark is-large">Places To See In {{ location.cityName }}</span>
         <swiper :options="swiperOption">
             <swiper-slide v-for="place in places" :key="place.id">
                 <div class="card">
@@ -65,9 +65,20 @@
                 location: state.location,
                 locationType: 'Food',
                 swiperOption: {
-                    slidesPerView: 2,
+                    //slidesPerView: 2,
+                    //centeredSlides: true,
+                    //spaceBetween: 10,
+                    effect: 'coverflow',
+                    grabCursor: true,
                     centeredSlides: true,
-                    spaceBetween: 10
+                    slidesPerView: 'auto',
+                    coverflowEffect: {
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows : true
+                    },
                 }
             };
         },
@@ -131,4 +142,10 @@
 </script>
 
 <style scoped>
+    .places-container {
+        margin: 60px 0 30px 0;
+    }
+    .tag {
+        margin-bottom: 20px;
+    }
 </style>
