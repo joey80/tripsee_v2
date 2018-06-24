@@ -92,6 +92,7 @@
     }
     #search {
         color: #322c49;
+        font-size: 1.1em;
     }
     #search input[type=text]:focus {
         border: 0;

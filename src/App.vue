@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container app-container">
     <app-header></app-header>
     <div class="body-container">
       <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
@@ -45,5 +45,8 @@
   }
   .body-container {
     padding: 10px;
+  }
+  .app-container {
+    max-width: 375px;
   }
 </style>

@@ -62,6 +62,10 @@
                 this.events = state.events;
             };
         },
+        updated() {
+            this.location = state.location;
+            this.places = state.places;
+        },
         mounted() {
             eventBus.$on('newLocation', (location) => {
 
@@ -76,6 +80,7 @@
 
                     state.events = this.results;
                     this.events = state.events;
+                    this.location = location;
 
                     localStorage.setItem('state', JSON.stringify(state));
                 });

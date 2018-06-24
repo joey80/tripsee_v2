@@ -90,7 +90,8 @@
             };
         },
         updated () {
-            
+            this.location = state.location;
+            this.places = state.places;
         },
         // methods: {
         //     getPlaces() {
@@ -133,6 +134,7 @@
 
                     state.places = this.results;
                     this.places = state.places;
+                    this.location = location;
 
                     localStorage.setItem('state', JSON.stringify(state));
                 });       
