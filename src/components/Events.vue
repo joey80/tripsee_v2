@@ -55,7 +55,6 @@
                     this.events = state.events;
 
                     localStorage.setItem('state', JSON.stringify(state));
-                    console.log('from mounted events', state.events);
                 });
             });           
         }

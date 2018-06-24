@@ -25,35 +25,50 @@
             <option value="Shopping">Shopping</option>
         </select> -->
         <p class="subtitle is-4">Places To See</p>
-        <div v-for="place in places" :key="place.id" class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img v-if="place.image_url" :src="place.image_url" alt="place.name" />
-                    <img v-else src="http://via.placeholder.com/350x350" alt="place.name" />
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content">
-                        <p class="title is-4">{{ place.name }}</p>
-                        <p class="subtitle is-6">{{ place.location.address1 }}</p>
+        <swiper :options="swiperOption">
+            <swiper-slide v-for="place in places" :key="place.id">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img v-if="place.image_url" :src="place.image_url" alt="place.name" />
+                            <img v-else src="http://via.placeholder.com/350x350" alt="place.name" />
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                               <p class="title is-4">{{ place.name }}</p>
+                               <p class="subtitle is-6">{{ place.location.address1 }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </swiper-slide>
+        </swiper>
     </div>
 </template>
 
 <script>
     import { eventBus, state } from '../main';
     import axios from 'axios';
+    import 'swiper/dist/css/swiper.css';
+    import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
     export default {
+        components: {
+            swiper,
+            swiperSlide
+        },
         data: function() {
             return {
                 places: state.places,
                 location: state.location,
-                locationType: 'Food'
+                locationType: 'Food',
+                swiperOption: {
+                    slidesPerView: 2,
+                    centeredSlides: true,
+                    spaceBetween: 10
+                }
             };
         },
         created() {
@@ -62,6 +77,9 @@
                 this.location = state.location;
                 this.places = state.places;
             };
+        },
+        updated () {
+            
         },
         // methods: {
         //     getPlaces() {
@@ -85,7 +103,7 @@
         //             localStorage.setItem('state', JSON.stringify(state));
         //         });
         //     }
-        // },
+        //},
         mounted() {
             eventBus.$on('newLocation', (location) => {
 
@@ -113,7 +131,4 @@
 </script>
 
 <style scoped>
-    .card {
-        margin: 30px 0 30px 0;
-    }
 </style>

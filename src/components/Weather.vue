@@ -7,19 +7,13 @@
             <div class="card-footer-item light">
                 <div class="item-center">
                     <span class="temp">{{ Math.floor(weather.temp) }}&#176;</span>
-                    <span class="name">Currently {{ weather.description }}<br />in {{ weather.name }}</span>
+                    <span class="name">Currently {{ weather.description }}<br />in <strong>{{ weather.name }}</strong></span>
                 </div>
             </div>
         </div>
         <div class="card-footer">
             <div class="card-footer-item">                
-                <p class="subtitle is-5">DAY 1</p>
-            </div>
-            <div class="card-footer-item">                
-                <p class="subtitle is-5">DAY 2</p>
-            </div>
-            <div class="card-footer-item">                
-                <p class="subtitle is-5">DAY 3</p>
+                <p class="forecast">{{ weather.forecast }}</p>
             </div>
         </div>
     </div>
@@ -57,12 +51,14 @@
                     this.description = response.data.currently.summary;
                     this.name = location.cityName;
                     this.icon = response.data.currently.icon;
+                    this.forecast = response.data.daily.summary;
 
                     state.weather = {
                         temp: this.temp,
                         description: this.description,
                         name: this.name,
-                        icon: this.icon
+                        icon: this.icon,
+                        forecast: this.forecast
                     }
 
                     this.weather = state.weather;
@@ -93,7 +89,8 @@
     }
     .temp {
         display: block;
-        font-size: 3.5em;
+        font-size: 3.8em;
+        font-weight: bold;
     }
     .name {
         display: block;
@@ -104,5 +101,8 @@
     }
     .card-footer-item {
         border: 0;
+    }
+    .forecast {
+        font-size: 0.8em;
     }
 </style>

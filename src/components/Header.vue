@@ -47,5 +47,6 @@ export default {
         font-family: 'Muli', sans-serif;
         color: #ade16d;
         font-size: 0.9em;
+        letter-spacing: -3px;
     }
 </style>
