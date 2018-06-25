@@ -1,7 +1,7 @@
 <template>
   <div class="container app-container">
-    <app-header></app-header>
     <div class="body-container">
+      <app-header></app-header>
       <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
       <weatherSection></weatherSection>
       <placeSection></placeSection>
@@ -42,9 +42,12 @@
   body {
     font-family: 'Muli', sans-serif;
     background-color: #f8f8f8;
+    background-image: url('../src/assets/images/bg.jpg');
   }
   .body-container {
     padding: 10px;
+    background-color: #f8f8f8;
+    box-shadow: 0px 0px 59px -11px rgba(0,0,0,0.55);
   }
   .app-container {
     max-width: 375px;
