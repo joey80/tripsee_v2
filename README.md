@@ -4,8 +4,8 @@ Tripsee is a single page app that I'm currently working on that was built with V
 
 [Live Demo Site](https://joeyui-tripsee.herokuapp.com/)
 
-![Tripsee](https://user-images.githubusercontent.com/3519112/41633964-7cc8b8e4-740f-11e8-9bad-f1959ae1a319.JPG)
-![Tripsee](https://user-images.githubusercontent.com/3519112/41633965-7cd6dc3a-740f-11e8-8939-1bb9cde435a8.JPG)
+![Tripsee](https://user-images.githubusercontent.com/3519112/41825656-ad70931a-77f0-11e8-9a9d-28ce426f3a41.PNG)
+![Tripsee](https://user-images.githubusercontent.com/3519112/41825657-ad8f5ff2-77f0-11e8-9e0d-c847c45537a2.PNG)
 
 ## Built With
 
