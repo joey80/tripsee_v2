@@ -6,16 +6,15 @@
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img v-bind:src="event.logo.original.url" alt="event.name.text" />
-                            <img v-if="event.logo" :src="event.logo.original.url" alt="event.name" />
-                            <img v-else src="http://via.placeholder.com/350x350" alt="event.name" />
+                            <img v-if="event.logo" :src="event.logo.original.url" alt="event.name.text" />
+                            <img v-else src="http://via.placeholder.com/350x350" alt="event.name.text" />
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                               <p class="title is-4">{{ event.name.text }}</p>
-                               <p class="subtitle is-6">{{ event.start.local }}</p>
+                               <p class="card-title">{{ event.name.text }}</p>
+                               <p class="card-subtitle">{{ event.start.local }}</p>
                             </div>
                         </div>
                     </div>
@@ -41,17 +40,8 @@
                 events: state.events,
                 location: state.location,
                 swiperOption: {
-                    effect: 'coverflow',
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: 'auto',
-                    coverflowEffect: {
-                        rotate: 50,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 1,
-                        slideShadows : true
-                    },
+                    spaceBetween: 10,
+                    slidesPerView: 2
                 }
             };
         },
@@ -95,5 +85,19 @@
     }
     .tag {
         margin-bottom: 20px;
+    }
+    .card {
+        height: 250px;
+    }
+    .card-title {
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+    .card-subtitle {
+        padding-top: 5px;
+        font-size: 0.6em;
+    }
+    .card-content {
+        padding: 10px;
     }
 </style>

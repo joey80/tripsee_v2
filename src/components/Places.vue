@@ -37,8 +37,8 @@
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                               <p class="title is-4">{{ place.name }}</p>
-                               <p class="subtitle is-6">{{ place.location.address1 }}</p>
+                               <span class="card-title">{{ place.name }}</span>
+                               <p class="card-subtitle">{{ place.location.address1 }}</p>
                             </div>
                         </div>
                     </div>
@@ -65,20 +65,8 @@
                 location: state.location,
                 locationType: 'Food',
                 swiperOption: {
-                    //slidesPerView: 2,
-                    //centeredSlides: true,
-                    //spaceBetween: 10,
-                    effect: 'coverflow',
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: 'auto',
-                    coverflowEffect: {
-                        rotate: 50,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 1,
-                        slideShadows : true
-                    },
+                    spaceBetween: 10,
+                    slidesPerView: 2
                 }
             };
         },
@@ -149,5 +137,19 @@
     }
     .tag {
         margin-bottom: 20px;
+    }
+    .card {
+        height: 300px;
+    }
+    .card-title {
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+    .card-subtitle {
+        padding-top: 5px;
+        font-size: 0.6em;
+    }
+    .card-content {
+        padding: 10px;
     }
 </style>
