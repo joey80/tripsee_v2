@@ -1,12 +1,13 @@
 <template>
     <div class="logo-container">
         <div>
-            <div class="tripsee-logo">
-                trip<span class="light">see</span>
+            <div>
+                <img src="../assets/images/logo.png" class="logo" />
+                <!-- trip<span class="light">see</span> -->
             </div>
-            <div class="tripsee-subtitle">
+            <!-- <div class="tripsee-subtitle">
                 Discover Your Next Favorite Place
-            </div>
+            </div> -->
         </div>
         <span class="icon tripsee-menu">
             <i class="fas fa-bars"></i>
@@ -25,6 +26,9 @@ export default {
         padding: 10px 20px 0 20px;
         justify-content: space-between;
         align-items: center;
+    }
+    .logo {
+        max-width: 250px;
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;
