@@ -47,7 +47,9 @@
         mounted() {
             eventBus.$on('newLocation', (location) => {
                 
+                // Shows the loading animation
                 this.loading = true;
+
                 // Gets the weather from the location lat and lng
                 const url = 'https://api.darksky.net/forecast/';
                 const key = '0f17cf28d5077a6eaa100a5baed07ef0';
@@ -70,6 +72,8 @@
                     }
 
                     this.weather = state.weather;
+
+                    // Hides the loading animation showing the new data in the template
                     this.loading = false;
 
                     // Save it to LocalStorage

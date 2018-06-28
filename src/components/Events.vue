@@ -19,7 +19,7 @@
                             <div class="media">
                                 <div class="media-content">
                                 <p class="card-title">{{ event.name.text }}</p>
-                                <p class="card-subtitle">{{ event.start.local }}</p>
+                                <p class="card-subtitle">{{ getTheDate(event.start.local) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -63,10 +63,20 @@
             this.location = state.location;
             this.places = state.places;
         },
+        methods: {
+            getTheDate(date) {
+                const newDate = new Date(date).toLocaleDateString();
+                const newTime = new Date(date).toLocaleTimeString();
+
+                return `${newDate} @ ${newTime}`;
+            }
+        },
         mounted() {
             eventBus.$on('newLocation', (location) => {
 
+                // Shows the loading animation
                 this.loading = true;
+
                 // Gets the lat and lng of the city name or zipcode that was queried
                 const event_token = 'R4SCC5Z2YX3I7X2YRKE7';
                 const event_url = `https://www.eventbriteapi.com/v3/events/search/`;
@@ -79,6 +89,8 @@
                     state.events = this.results;
                     this.events = state.events;
                     this.location = location;
+
+                    // Hides the loading animation showing the new data in the template
                     this.loading = false;
 
                     localStorage.setItem('state', JSON.stringify(state));

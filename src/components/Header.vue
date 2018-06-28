@@ -9,15 +9,24 @@
                 Discover Your Next Favorite Place
             </div> -->
         </div>
-        <span class="icon tripsee-menu">
+        <span class="icon tripsee-menu" @click="handleClick">
             <i class="fas fa-bars"></i>
         </span>
     </div>
 </template>
 
 <script>
-export default {
-}
+    import { eventBus, state } from '../main';
+
+    export default {
+        methods: {
+            handleClick() {
+                console.log('you clicked me!');
+                eventBus.$emit('menuClick', 'on');
+            }
+        }
+    }
+
 </script>
 
 <style scoped>
@@ -46,6 +55,7 @@ export default {
         padding-top: 10px;
         color: #7fa953;
         font-size: 1.3em;
+        cursor: pointer;
     }
     .light {
         font-family: 'Muli', sans-serif;

@@ -114,7 +114,9 @@
         mounted() {
             eventBus.$on('newLocation', (location) => {
 
+                // Shows the loading animation
                 this.loading = true;
+
                 // Gets the lat and lng of the city name or zipcode that was queried
                 const yelp_url = 'https://api.yelp.com/v3/businesses/search';
                 const yelp_token = 'OO7yjS5Re_tG1oieUdRCyvpbj2gbxiyDv6nZCBx803xeDXDRPFYQSz54CUGETUz-WV6PB-0Dvrc1DR9RX03sGu3pQsFE9Kwbb7rPGPehEwUoDYfNsBeLxl0mP6oEW3Yx';
@@ -131,6 +133,8 @@
                     state.places = this.results;
                     this.places = state.places;
                     this.location = location;
+
+                    // Hides the loading animation showing the new data in the template
                     this.loading = false;
 
                     localStorage.setItem('state', JSON.stringify(state));

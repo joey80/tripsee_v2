@@ -1,16 +1,16 @@
 <template>
   <div class="container app-container">
     <div class="body-container">
-      <app-header></app-header>
-      <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
-      <weatherSection></weatherSection>
-      <placeSection></placeSection>
-      <eventSection></eventSection>
-      <!-- <div class="row">
-        <div class="col-xs-12">
-          <router-view></router-view>
-        </div>
-      </div> -->
+      <div class="sidebar">
+        I'm the sidebar
+      </div>
+      <div>
+        <app-header></app-header>
+        <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
+        <weatherSection></weatherSection>
+        <placeSection></placeSection>
+        <eventSection></eventSection>
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +21,7 @@
   import Weather from './components/Weather.vue';
   import Places from './components/Places.vue';
   import Events from './components/Events.vue';
+  import { eventBus, state } from './main';
 
   export default {
     components: {
@@ -34,8 +35,14 @@
       return {
         location: ''
       }
+    },
+    mounted() {
+      eventBus.$on('menuClick', (click) => {
+        console.log('this just happened', click);
+        // change the sidebar to off screen
+      });
     }
-  }
+  };
 </script>
 
 <style>
@@ -43,6 +50,13 @@
     font-family: 'Muli', sans-serif;
     background-color: #f8f8f8;
     background-image: url('../src/assets/images/bg.jpg');
+  }
+  .sidebar {
+    display: none;
+    z-index: 2;
+    width: 100%;
+    height: 500px;
+    background-color: green;
   }
   .body-container {
     padding: 10px;
