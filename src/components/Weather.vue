@@ -1,19 +1,25 @@
 <template>
-    <div class="card">
-        <div class="card-footer">
-            <div class="card-footer-item dark">
-                <img :src="'../src/assets/weather/' + weather.icon + '.png'">
-            </div>
-            <div class="card-footer-item light">
-                <div class="item-center">
-                    <span class="temp">{{ Math.floor(weather.temp) }}&#176;</span>
-                    <span class="name">Currently {{ weather.description }}<br />in <strong>{{ weather.name }}</strong></span>
+    <div>
+        <div v-if="loading" class="loading">
+            Loading weather
+            <div class="circle"></div>
+        </div>
+        <div v-if="!loading" class="card">        
+            <div class="card-footer">
+                <div class="card-footer-item dark">
+                    <img :src="'../src/assets/weather/' + weather.icon + '.png'">
+                </div>
+                <div class="card-footer-item light">
+                    <div class="item-center">
+                        <span class="temp">{{ weather.temp }}&#176;</span>
+                        <span class="name">Currently {{ weather.description }}<br />in <strong>{{ weather.name }}</strong></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer">
-            <div class="card-footer-item">                
-                <p class="forecast">{{ weather.forecast }}</p>
+            <div class="card-footer">
+                <div class="card-footer-item">                
+                    <p class="forecast">{{ weather.forecast }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -27,7 +33,8 @@
         data: function() {
             return {
                 weather: '',
-                location: ''
+                location: '',
+                loading: false
             };
         },
         created() {
@@ -40,6 +47,7 @@
         mounted() {
             eventBus.$on('newLocation', (location) => {
                 
+                this.loading = true;
                 // Gets the weather from the location lat and lng
                 const url = 'https://api.darksky.net/forecast/';
                 const key = '0f17cf28d5077a6eaa100a5baed07ef0';
@@ -54,7 +62,7 @@
                     this.forecast = response.data.daily.summary;
 
                     state.weather = {
-                        temp: this.temp,
+                        temp: Math.floor(this.temp),
                         description: this.description,
                         name: this.name,
                         icon: this.icon,
@@ -62,6 +70,7 @@
                     }
 
                     this.weather = state.weather;
+                    this.loading = false;
 
                     // Save it to LocalStorage
                     localStorage.setItem('state', JSON.stringify(state));
@@ -104,5 +113,27 @@
     }
     .forecast {
         font-size: 0.8em;
+    }
+    .loading {
+        margin: 40px auto;
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.7em;
+        text-transform: uppercase;
+    }
+    .circle {
+        margin: 20px auto;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        border: 8px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #7fa953;
+        animation: spin 1s infinite linear;
+    }
+    @keyframes spin { 
+        100% { 
+            transform: rotate(360deg); 
+        } 
     }
 </style>

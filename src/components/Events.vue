@@ -1,26 +1,32 @@
 <template>
-    <div class="events-container">
-        <span class="tag is-dark is-large">Upcoming Events In {{ location.cityName }}</span>
-        <swiper :options="swiperOption">
-            <swiper-slide v-for="event in events" :key="event.id">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img v-if="event.logo" :src="event.logo.original.url" alt="event.name.text" />
-                            <img v-else src="http://via.placeholder.com/350x350" alt="event.name.text" />
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                               <p class="card-title">{{ event.name.text }}</p>
-                               <p class="card-subtitle">{{ event.start.local }}</p>
+    <div>
+        <div v-if="loading" class="loading">
+            Loading events
+            <div class="circle"></div>
+        </div>
+        <div v-if="!loading" class="events-container">
+            <span class="tag is-dark is-large">Upcoming Events In {{ location.cityName }}</span>
+            <swiper :options="swiperOption">
+                <swiper-slide v-for="event in events" :key="event.id">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img v-if="event.logo" :src="event.logo.original.url" alt="event.name.text" />
+                                <img v-else src="http://via.placeholder.com/350x350" alt="event.name.text" />
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                <p class="card-title">{{ event.name.text }}</p>
+                                <p class="card-subtitle">{{ event.start.local }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </swiper-slide>
-        </swiper>
+                </swiper-slide>
+            </swiper>
+        </div>
     </div>
 </template>
 
@@ -39,6 +45,7 @@
             return {
                 events: state.events,
                 location: state.location,
+                loading: false,
                 swiperOption: {
                     spaceBetween: 10,
                     slidesPerView: 2
@@ -59,6 +66,7 @@
         mounted() {
             eventBus.$on('newLocation', (location) => {
 
+                this.loading = true;
                 // Gets the lat and lng of the city name or zipcode that was queried
                 const event_token = 'R4SCC5Z2YX3I7X2YRKE7';
                 const event_url = `https://www.eventbriteapi.com/v3/events/search/`;
@@ -71,6 +79,7 @@
                     state.events = this.results;
                     this.events = state.events;
                     this.location = location;
+                    this.loading = false;
 
                     localStorage.setItem('state', JSON.stringify(state));
                 });
@@ -99,5 +108,27 @@
     }
     .card-content {
         padding: 10px;
+    }
+    .loading {
+        margin: 40px auto;
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.7em;
+        text-transform: uppercase;
+    }
+    .circle {
+        margin: 20px auto;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        border: 8px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #7fa953;
+        animation: spin 1s infinite linear;
+    }
+    @keyframes spin { 
+        100% { 
+            transform: rotate(360deg); 
+        } 
     }
 </style>
