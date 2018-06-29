@@ -2,7 +2,7 @@
   <div class="container app-container">
     <div class="body-container">
       <div class="sidebar">
-        I'm the sidebar
+        Coming soon!
       </div>
       <div>
         <app-header></app-header>
@@ -40,6 +40,8 @@
       eventBus.$on('menuClick', (click) => {
         console.log('this just happened', click);
         // change the sidebar to off screen
+        const sideBar = document.querySelector('.sidebar');
+        sideBar.classList.toggle("move");
       });
     }
   };
@@ -52,11 +54,22 @@
     background-image: url('../src/assets/images/bg.jpg');
   }
   .sidebar {
-    display: none;
-    z-index: 2;
+    position: absolute;
+    text-align: right;
+    padding: 30px;
+    top: 0;
+    left: 0;
+    z-index: 9;
     width: 100%;
-    height: 500px;
-    background-color: green;
+    height: 100vh;
+    color: #fff;
+    background-color: #363636;
+    transform: translateX(-100%);
+    transition: all 0.5s ease-in-out;
+  }
+  .move {
+    transform: translateX(-20%);
+    transition: all 0.5s ease-in-out;
   }
   .body-container {
     padding: 10px;
@@ -65,5 +78,6 @@
   }
   .app-container {
     max-width: 375px;
+    overflow: hidden;
   }
 </style>
