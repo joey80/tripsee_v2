@@ -89,14 +89,14 @@
         margin: 30px 0 30px 0;
     }
     .dark {
-        background-color: #7fa953;
+        background-color: #5a9216;
         color: #fff;
         border: 0;
         flex-grow: 2;
     }
     .light {
-        background-color: #ade16d;
-        color: #494949;
+        background-color: #8BC34A;
+        color: #000;
         border: 0;
         flex-grow: 4;
     }

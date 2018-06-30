@@ -73,7 +73,7 @@
   }
   .body-container {
     padding: 10px;
-    background-color: #f8f8f8;
+    background-color: #eee;
     box-shadow: 0px 0px 59px -11px rgba(0,0,0,0.55);
   }
   .app-container {

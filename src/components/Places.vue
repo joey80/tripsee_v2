@@ -29,7 +29,7 @@
                 <option value="Restaurants">Restaurants</option>
                 <option value="Shopping">Shopping</option>
             </select> -->
-            <span class="tag is-dark is-large">Places To See In {{ location.cityName }}</span>
+            <span class="tag">Places To See In <span class="tag-primary-color">&nbsp;{{ location.cityName }}</span></span>
             <swiper :options="swiperOption">
                 <swiper-slide v-for="place in places" :key="place.id">
                     <div class="card">
@@ -49,6 +49,7 @@
                         </div>
                     </div>
                 </swiper-slide>
+                <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
         </div>
     </div>
@@ -73,7 +74,11 @@
                 loading: false,
                 swiperOption: {
                     spaceBetween: 10,
-                    slidesPerView: 2
+                    slidesPerView: 'auto',
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    }
                 }
             };
         },
@@ -150,9 +155,15 @@
     }
     .tag {
         margin-bottom: 20px;
+        background-color: #323232;
+        color: #fff;
+        font-size: 0.8em;
+    }
+    .tag-primary-color {
+        color: rgb(139, 195, 74);
     }
     .card {
-        height: 300px;
+        padding-bottom: 40px;
     }
     .card-title {
         font-size: 0.9em;
