@@ -39,9 +39,9 @@
         },
         created() {
             if(state) {
-                const state = JSON.parse(localStorage.getItem('state'));
-                this.location = state.location;
-                this.weather = state.weather;
+                const appState = JSON.parse(localStorage.getItem('state'));
+                this.location = appState.location;
+                this.weather = appState.weather;
             };
         },
         mounted() {
@@ -63,6 +63,7 @@
                     this.icon = response.data.currently.icon;
                     this.forecast = response.data.daily.summary;
 
+                    // Store the repsonse in the state.weather object
                     state.weather = {
                         temp: Math.floor(this.temp),
                         description: this.description,

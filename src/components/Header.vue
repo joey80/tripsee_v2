@@ -3,11 +3,7 @@
         <div>
             <div>
                 <img src="../assets/images/logo.png" class="logo" />
-                <!-- trip<span class="light">see</span> -->
             </div>
-            <!-- <div class="tripsee-subtitle">
-                Discover Your Next Favorite Place
-            </div> -->
         </div>
         <span class="icon tripsee-menu" @click="handleClick">
             <i class="fas fa-bars"></i>
@@ -16,7 +12,7 @@
 </template>
 
 <script>
-    import { eventBus, state } from '../main';
+    import { eventBus } from '../main';
 
     export default {
         methods: {

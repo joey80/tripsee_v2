@@ -20,15 +20,7 @@
     export default {
         data: function() {
             return {
-                query: state.query,
-                location: state.location
-            };
-        },
-        created() {
-            if(state) {
-                const state = JSON.parse(localStorage.getItem('state'));
-                this.query = '';
-                this.location = state.location;
+                query: ''
             };
         },
         methods: {
@@ -42,13 +34,11 @@
                 eventBus.$emit('newQuery', state.query);
 
                 // Empty the contents of the search field
-                //this.query = '';
-                document.getElementById('search').value = '';
+                this.query = '';
             }
         },
         mounted() {
             eventBus.$on('newQuery', (query) => {
-                //this.query = query;
 
                 // Gets the lat and lng of the city name or zipcode that was queried
                 var encodedAddress = encodeURIComponent(query);
@@ -61,19 +51,18 @@
                     this.lng = response.data.results[0].geometry.location.lng;
                     this.formatted_address = response.data.results[0].formatted_address;
 
-                    //this split is more reliable as the city named changed in the result
+                    //this split is more reliable as the city named changes in the result
                     //list if you searched for a zipcode or city name. The formatted address
                     //never changes in the results
                     this.cityName = this.formatted_address.split(',')[0];
 
+                    // Store the repsonse in the state.location object
                     state.location = {
                         lat: this.lat,
                         lng: this.lng,
                         formatted_address: this.formatted_address,
                         cityName: this.cityName
                     }
-
-                    this.location = state.location;
 
                     // Save it to LocalStorage
                     localStorage.setItem('state', JSON.stringify(state));

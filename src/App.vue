@@ -6,7 +6,7 @@
       </div>
       <div>
         <app-header></app-header>
-        <searchBar :newLocation='location' @newLocation='location = $event'></searchBar>
+        <searchBar></searchBar>
         <weatherSection></weatherSection>
         <placeSection></placeSection>
         <eventSection></eventSection>
@@ -33,7 +33,6 @@
     },
     data: function() {
       return {
-        location: ''
       }
     },
     mounted() {

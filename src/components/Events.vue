@@ -44,8 +44,8 @@
         },
         data: function() {
             return {
-                events: state.events,
-                location: state.location,
+                events: '',
+                location: '',
                 loading: false,
                 swiperOption: {
                     spaceBetween: 10,
@@ -59,14 +59,10 @@
         },
         created() {
             if(state) {
-                const state = JSON.parse(localStorage.getItem('state'));
-                this.location = state.location;
-                this.events = state.events;
+                const appState = JSON.parse(localStorage.getItem('state'));
+                this.location = appState.location;
+                this.events = appState.events;
             };
-        },
-        updated() {
-            this.location = state.location;
-            this.places = state.places;
         },
         methods: {
             getTheDate(date) {
@@ -91,13 +87,17 @@
                 .then(response => {
                     this.results = response.data.events;
 
+                    // Store the repsonse in the state.events object
                     state.events = this.results;
+
+                    // Update the data with the new events and city name (inside of location)
                     this.events = state.events;
                     this.location = location;
 
                     // Hides the loading animation showing the new data in the template
                     this.loading = false;
 
+                    // Save it to LocalStorage
                     localStorage.setItem('state', JSON.stringify(state));
                 });
             });           

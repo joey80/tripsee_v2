@@ -68,8 +68,8 @@
         },
         data: function() {
             return {
-                places: state.places,
-                location: state.location,
+                places: '',
+                location: '',
                 locationType: 'Food',
                 loading: false,
                 swiperOption: {
@@ -84,38 +84,11 @@
         },
         created() {
             if(state) {
-                const state = JSON.parse(localStorage.getItem('state'));
-                this.location = state.location;
-                this.places = state.places;
+                const appState = JSON.parse(localStorage.getItem('state'));
+                this.places = appState.places;
+                this.location = appState.location;
             };
         },
-        updated () {
-            this.location = state.location;
-            this.places = state.places;
-        },
-        // methods: {
-        //     getPlaces() {
-        //         console.log('getPlaces', location.cityName);
-        //         // Gets the lat and lng of the city name or zipcode that was queried
-        //         const yelp_url = 'https://api.yelp.com/v3/businesses/search';
-        //         const yelp_token = 'OO7yjS5Re_tG1oieUdRCyvpbj2gbxiyDv6nZCBx803xeDXDRPFYQSz54CUGETUz-WV6PB-0Dvrc1DR9RX03sGu3pQsFE9Kwbb7rPGPehEwUoDYfNsBeLxl0mP6oEW3Yx';
-        //         const proxy = 'https://cors-anywhere.herokuapp.com/';
-
-        //         axios.get(`${proxy}${yelp_url}?&latitude=${state.location.lat}&longitude=${state.location.lng}&radius=5000&term=${this.locationType}`, {
-        //             headers: {
-        //                 Authorization: `Bearer ${yelp_token}`
-        //             }
-        //         })
-        //         .then(response => {
-        //             this.results = response.data.businesses;
-
-        //             state.places = this.results;
-        //             this.places = state.places;
-
-        //             localStorage.setItem('state', JSON.stringify(state));
-        //         });
-        //     }
-        //},
         mounted() {
             eventBus.$on('newLocation', (location) => {
 
@@ -135,13 +108,17 @@
                 .then(response => {
                     this.results = response.data.businesses;
 
+                    // Store the repsonse in the state.places object
                     state.places = this.results;
+
+                    // Update the data with the new places and city name (inside of location)
                     this.places = state.places;
                     this.location = location;
 
                     // Hides the loading animation showing the new data in the template
                     this.loading = false;
 
+                    // Save it to LocalStorage
                     localStorage.setItem('state', JSON.stringify(state));
                 });       
             });           
