@@ -79,11 +79,21 @@
     .search-container {
         margin-top: 10px;
     }
+    .input {
+        box-shadow: none;
+    }
     #search {
         color: #322c49;
         font-size: 1.1em;
+        border: 1px solid transparent;
+        transition: all 0.3s ease-in-out;
     }
-    #search input[type=text]:focus {
+    #search:hover {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 10px 15px 5px rgba(0,0,0,0.05);
+    }
+    #search:focus {
         border: 0;
         outline: none;
         box-shadow: none;
