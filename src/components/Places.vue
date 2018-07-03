@@ -33,6 +33,13 @@
             <swiper :options="swiperOption">
                 <swiper-slide v-for="place in places" :key="place.id">
                     <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="place-name">{{ place.name }}</span>
+                                <img :src="'../src/assets/images/yelp/' + place.rating + '.png'" class="card-rating">
+                                <span class="review-count">Based off of {{ place.review_count }} reviews</span>
+                            </div>
+                        </div>
                         <div class="card-image">
                             <figure class="image is-4by3">
                                 <img v-if="place.image_url" :src="place.image_url" alt="place.name" />
@@ -42,8 +49,9 @@
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-content">
-                                <span class="card-title">{{ place.name }}</span>
+                                <p class="card-subtitle">{{ place.phone }}</p>
                                 <p class="card-subtitle">{{ place.location.address1 }}</p>
+                                <p class="card-subtitle is-open">{{ place.is_closed ? 'CURRENTLY CLOSED' : 'OPEN NOW'}}</p>
                                 </div>
                             </div>
                         </div>
@@ -142,6 +150,25 @@
     .card {
         padding-bottom: 40px;
     }
+    .card-header {
+        padding: 10px;
+        font-size: 1.2em;
+    }
+    .card-rating {
+        display: block;
+        max-width: 40%;
+    }
+    .place-name {
+        display: inline-block;
+        padding-bottom: 10px;
+        font-weight: bold;
+    }
+    .review-count {
+        display: inline-block;
+        padding-top: 5px;
+        font-size: 0.6em;
+        font-style: italic; 
+    }
     .card-title {
         font-size: 0.9em;
         font-weight: bold;
@@ -149,6 +176,10 @@
     .card-subtitle {
         padding-top: 5px;
         font-size: 0.6em;
+    }
+    .is-open {
+        font-size: 0.8em;
+        font-weight: bold;
     }
     .card-content {
         padding: 10px;

@@ -30,6 +30,7 @@
         display: flex;
         padding: 10px 20px 0 20px;
         justify-content: space-between;
+        align-items: center;
     }
     .logo {
         max-width: 250px;
@@ -48,7 +49,6 @@
         font-style: italic;
     }
     .tripsee-menu {
-        padding-top: 10px;
         color: #7fa953;
         font-size: 1.3em;
         cursor: pointer;
