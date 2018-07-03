@@ -78,7 +78,7 @@
                 // Shows the loading animation
                 this.loading = true;
 
-                // Gets the lat and lng of the city name or zipcode that was queried
+                // Searches for events from the lat and lng of the city name or zipcode that was queried
                 const event_token = 'R4SCC5Z2YX3I7X2YRKE7';
                 const event_url = `https://www.eventbriteapi.com/v3/events/search/`;
                 const proxy = 'https://cors-anywhere.herokuapp.com/';

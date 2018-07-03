@@ -98,4 +98,7 @@
         outline: none;
         box-shadow: none;
     }
+    .icon {
+        transition: all 0.4s ease-in-out;
+    }
 </style>

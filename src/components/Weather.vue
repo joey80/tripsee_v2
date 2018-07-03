@@ -40,7 +40,6 @@
         created() {
             if(state) {
                 const appState = JSON.parse(localStorage.getItem('state'));
-                this.location = appState.location;
                 this.weather = appState.weather;
             };
         },
