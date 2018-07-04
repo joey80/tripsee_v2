@@ -49,9 +49,12 @@
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-content">
-                                <p class="card-subtitle">{{ place.phone }}</p>
-                                <p class="card-subtitle">{{ place.location.address1 }}</p>
-                                <p class="card-subtitle is-open">{{ place.is_closed ? 'CURRENTLY CLOSED' : 'OPEN NOW'}}</p>
+                                    Tags:
+                                    <span v-if="place.categories[0]" class="tag">{{ place.categories[0].title }}</span>
+                                    <span v-if="place.categories[1]" class="tag">{{ place.categories[1].title }}</span>
+                                    <p class="card-subtitle">{{ place.display_phone }}</p>
+                                    <p class="card-subtitle">{{ place.location.display_address[0] }}<br />
+                                    {{ place.location.display_address[1] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -175,14 +178,20 @@
     }
     .card-subtitle {
         padding-top: 5px;
-        font-size: 0.6em;
+        font-size: 0.8em;
     }
     .is-open {
         font-size: 0.8em;
         font-weight: bold;
+        background-color: #5a9216;
     }
     .card-content {
         padding: 10px;
+    }
+    .card-image {
+        border-top: 8px solid #5a9216;
+        border-bottom: 8px solid #5a9216;
+        /* border-bottom: 8px solid #8BC34A; */
     }
     .loading {
         margin: 40px auto;
