@@ -33,7 +33,7 @@
         align-items: center;
     }
     .logo {
-        max-width: 250px;
+        max-width: 200px;
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;

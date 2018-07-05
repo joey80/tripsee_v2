@@ -102,7 +102,7 @@
     }
     .temp {
         display: block;
-        font-size: 3.8em;
+        font-size: 3.5em;
         font-weight: bold;
     }
     .name {

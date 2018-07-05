@@ -34,17 +34,25 @@
                 <swiper-slide v-for="place in places" :key="place.id">
                     <div class="card">
                         <div class="card-header">
-                            <div>
+                            <div class="header-container">
                                 <span class="place-name">{{ place.name }}</span>
-                                <img :src="'../src/assets/images/yelp/' + place.rating + '.png'" class="card-rating">
-                                <span class="review-count">Based off of {{ place.review_count }} reviews</span>
+                                <div class="yelp">
+                                    <div>
+                                        <img :src="'../src/assets/images/yelp/' + place.rating + '.png'" class="card-rating">
+                                        <span class="review-count">Based off of {{ place.review_count }} reviews</span>
+                                    </div>
+                                    <a :href="place.url" target="_blank"><img :src="'../src/assets/images/yelp/logo.png'" class="yelp-logo"></a>
+                                </div>
                             </div>
                         </div>
                         <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img v-if="place.image_url" :src="place.image_url" alt="place.name" />
-                                <img v-else src="http://via.placeholder.com/350x350" alt="place.name" />
-                            </figure>
+                            <!-- <figure class="image is-4by3"> -->
+                                <!-- <div class="yelp-image" style="background-image: url(:src=place.image_url)" -->
+                                <!-- <img v-if="place.image_url" :src="place.image_url" alt="place.name" /> -->
+                                <div v-if="place.image_url" :style="{ 'background-image': 'url(' + place.image_url + ')' }" class="yelp-image"></div>
+                                <div v-else :style="{ 'background-image': 'url(http://via.placeholder.com/350x350)' }" class="yelp-image"></div>
+                                <!-- <img v-else src="http://via.placeholder.com/350x350" alt="place.name" /> -->
+                            <!-- </figure> -->
                         </div>
                         <div class="card-content">
                             <div class="media">
@@ -138,6 +146,10 @@
 </script>
 
 <style scoped>
+    .swiper-pagination {
+        position: relative;
+        transform: translateY(-15px);
+    }
     .places-container {
         margin: 60px 0 30px 0;
     }
@@ -152,6 +164,7 @@
     }
     .card {
         padding-bottom: 40px;
+        min-height: 570px;
     }
     .card-header {
         padding: 10px;
@@ -185,13 +198,31 @@
         font-weight: bold;
         background-color: #5a9216;
     }
+    .header-container {
+        width: 100%;
+    }
+    .yelp {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .yelp-logo {
+        max-width: 80px;
+        border: 0;
+    }
+    .yelp-image {
+        background-size: 400px;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+    }
     .card-content {
         padding: 10px;
     }
     .card-image {
         border-top: 8px solid #5a9216;
         border-bottom: 8px solid #5a9216;
-        /* border-bottom: 8px solid #8BC34A; */
+        height: 270px;
     }
     .loading {
         margin: 40px auto;
