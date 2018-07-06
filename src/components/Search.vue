@@ -27,6 +27,9 @@
             logQuery() {
                 state.query = this.query;
 
+                // Hide the virtual keyboard
+                document.getElementById('search').blur();
+
                 // Save it to LocalStorage
                 localStorage.setItem('state', JSON.stringify(state));
 
