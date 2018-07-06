@@ -1,13 +1,19 @@
 <template>
-    <div class="logo-container">
-        <div>
+    <div>
+        <div class="logo-container">
             <div>
-                <img src="../assets/images/logo.png" class="logo" />
+                <div>
+                    <img src="../assets/images/logo.png" class="logo" />
+                </div>
             </div>
+            <span class="icon tripsee-menu" @click="handleClick">
+                <i class="fas fa-bars"></i>
+            </span>
         </div>
-        <span class="icon tripsee-menu" @click="handleClick">
-            <i class="fas fa-bars"></i>
-        </span>
+        <div class="circle-container">
+            <div class="left-circle"></div>
+            <div class="right-circle"></div>
+        </div>
     </div>
 </template>
 
@@ -28,12 +34,14 @@
 <style scoped>
     .logo-container {
         display: flex;
-        padding: 10px 20px 10px 20px;
+        padding: 10px 20px 0 20px;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 8px dotted #fff;
+        margin-bottom: 25px;
     }
     .logo {
-        max-width: 200px;
+        max-width: 250px;
     }
     .tripsee-logo {
         font-family: 'Antic Slab', serif;
@@ -52,11 +60,32 @@
         color: #7fa953;
         font-size: 1.3em;
         cursor: pointer;
+        transform: translateY(-15px);
     }
     .light {
         font-family: 'Muli', sans-serif;
         color: #ade16d;
         font-size: 0.9em;
         letter-spacing: -3px;
+    }
+    .circle-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: -55px;
+    }
+    .left-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        transform: translateX(-40px);
+    }
+    .right-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        transform: translateX(40px);
     }
 </style>

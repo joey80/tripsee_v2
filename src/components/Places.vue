@@ -163,11 +163,11 @@
         color: rgb(139, 195, 74);
     }
     .card {
-        padding-bottom: 40px;
-        min-height: 570px;
+        /* padding-bottom: 40px; */
+        min-height: 550px;
     }
     .card-header {
-        padding: 10px;
+        padding: 8px;
         font-size: 1.2em;
     }
     .card-rating {
