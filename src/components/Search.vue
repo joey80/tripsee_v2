@@ -20,7 +20,8 @@
     export default {
         data: function() {
             return {
-                query: ''
+                query: '',
+                location: ''
             };
         },
         methods: {
@@ -40,6 +41,15 @@
                 this.query = '';
             }
         },
+        beforeCreate() {
+            const appState = JSON.parse(localStorage.getItem('state'));
+            this.location = appState.location;
+
+            // If the user has never used the app before preload some data so they don't see empty results
+            if(this.location == null) {
+                eventBus.$emit('newQuery', 'san fransisco');
+            }
+        },
         mounted() {
             eventBus.$on('newQuery', (query) => {
 
@@ -54,9 +64,9 @@
                     this.lng = response.data.results[0].geometry.location.lng;
                     this.formatted_address = response.data.results[0].formatted_address;
 
-                    //this split is more reliable as the city named changes in the result
-                    //list if you searched for a zipcode or city name. The formatted address
-                    //never changes in the results
+                    // this split is more reliable as the city name changes in the result
+                    // list if you searched for a zipcode or city name. Whereas the formatted
+                    // address never changes in the results
                     this.cityName = this.formatted_address.split(',')[0];
 
                     // Store the repsonse in the state.location object
