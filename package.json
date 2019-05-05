@@ -6,9 +6,9 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "start": "node server.js",
+        "build": "node server.js",
         "dev": "webpack-dev-server --open --hot --config webpack.config.dev.js",
-        "build": "webpack --config webpack.config.dev.js"
+        "build-dev": "webpack --config webpack.config.dev.js"
     },
     "dependencies": {
         "axios": "^0.18.0",
