@@ -43,20 +43,21 @@
         },
         beforeCreate() {
             const appState = JSON.parse(localStorage.getItem('state'));
-            this.location = appState.location;
 
             // If the user has never used the app before preload some data so they don't see empty results
-            if(this.location == null) {
+            if (appState == null) {
                 eventBus.$emit('newQuery', 'san fransisco');
             }
+
+            this.location = appState.location;
         },
         mounted() {
             eventBus.$on('newQuery', (query) => {
 
                 // Gets the lat and lng of the city name or zipcode that was queried
-                var encodedAddress = encodeURIComponent(query);
-                var google_key = 'AIzaSyAJjn9fajSJUjnvGy8SKqF914tFqHM15kU';
-                var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${google_key}`;
+                const encodedAddress = encodeURIComponent(query);
+                const google_key = 'AIzaSyAJjn9fajSJUjnvGy8SKqF914tFqHM15kU';
+                const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${google_key}`;
 
                 axios.get(geocodeUrl)
                 .then(response => {

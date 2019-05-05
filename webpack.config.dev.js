@@ -1,9 +1,12 @@
+const { VueLoaderPlugin } = require('vue-loader');
 const path = require('path');
 const webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-  entry: './src/main.js',
+  mode: 'development',
+  entry: [
+    './src/main.js',
+  ],
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -58,24 +61,4 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin()
   ]
-}
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = {
-    optimization: {
-      minimizer: [
-        // we specify a custom UglifyJsPlugin here to get source maps in production
-        new UglifyJsPlugin({
-          cache: true,
-          parallel: true,
-          uglifyOptions: {
-            compress: false,
-            ecma: 6,
-            mangle: true
-          },
-          sourceMap: true
-        })
-      ]
-    }
-  };
 }

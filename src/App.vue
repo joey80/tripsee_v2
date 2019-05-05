@@ -37,7 +37,6 @@
     },
     mounted() {
       eventBus.$on('menuClick', (click) => {
-        console.log('this just happened', click);
         // change the sidebar to off screen
         const sideBar = document.querySelector('.sidebar');
         sideBar.classList.toggle("move");

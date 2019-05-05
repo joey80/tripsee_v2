@@ -23,7 +23,6 @@
     export default {
         methods: {
             handleClick() {
-                console.log('you clicked me!');
                 eventBus.$emit('menuClick', 'on');
             }
         }
