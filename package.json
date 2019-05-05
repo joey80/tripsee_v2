@@ -5,10 +5,13 @@
     "author": "Joey <legerinvestments@gmail.com>",
     "license": "MIT",
     "private": true,
+    "engines": {
+        "node": "10.13.0"
+      },
     "scripts": {
-        "build": "node server.js",
+        "start": "node server.js",
         "dev": "webpack-dev-server --open --hot --config webpack.config.dev.js",
-        "build-dev": "webpack --config webpack.config.dev.js"
+        "build": "webpack --config webpack.config.dev.js"
     },
     "dependencies": {
         "axios": "^0.18.0",
