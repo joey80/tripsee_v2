@@ -58,7 +58,7 @@
             };
         },
         created() {
-            if(state) {
+            if (state != null) {
                 const appState = JSON.parse(localStorage.getItem('state'));
                 this.location = appState.location;
                 this.events = appState.events;

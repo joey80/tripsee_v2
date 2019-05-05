@@ -32,7 +32,7 @@
                 document.getElementById('search').blur();
 
                 // Save it to LocalStorage
-                localStorage.setItem('state', JSON.stringify(state));
+                localStorage.setItem('tripsee_state', JSON.stringify(state));
 
                 // Emit the new event that the query has changed
                 eventBus.$emit('newQuery', state.query);
@@ -40,16 +40,6 @@
                 // Empty the contents of the search field
                 this.query = '';
             }
-        },
-        beforeCreate() {
-            const appState = JSON.parse(localStorage.getItem('state'));
-
-            // If the user has never used the app before preload some data so they don't see empty results
-            if (appState == null) {
-                eventBus.$emit('newQuery', 'san fransisco');
-            }
-
-            this.location = appState.location;
         },
         mounted() {
             eventBus.$on('newQuery', (query) => {
@@ -79,7 +69,7 @@
                     }
 
                     // Save it to LocalStorage
-                    localStorage.setItem('state', JSON.stringify(state));
+                    localStorage.setItem('tripsee_state', JSON.stringify(state));
 
                     // Emit the new event that the location has changed
                     eventBus.$emit('newLocation', state.location);

@@ -38,12 +38,20 @@
             };
         },
         created() {
-            if(state) {
-                const appState = JSON.parse(localStorage.getItem('state'));
+            if (state != null) {
+                const appState = JSON.parse(localStorage.getItem('tripsee_state'));
                 this.weather = appState.weather;
+                console.log('the weather state is: ', state);
             };
         },
         mounted() {
+            const appState = JSON.parse(localStorage.getItem('tripsee_state'));
+
+            // If the user has never used the app before preload some data so they don't see empty results
+            if (appState == null) {
+                eventBus.$emit('newQuery', 'san fransisco');
+            }
+
             eventBus.$on('newLocation', (location) => {
                 
                 // Shows the loading animation
@@ -77,7 +85,7 @@
                     this.loading = false;
 
                     // Save it to LocalStorage
-                    localStorage.setItem('state', JSON.stringify(state));
+                    localStorage.setItem('tripsee_state', JSON.stringify(state));
                 });
             });         
         }

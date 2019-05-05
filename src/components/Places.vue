@@ -102,8 +102,8 @@
             };
         },
         created() {
-            if (state) {
-                const appState = JSON.parse(localStorage.getItem('state'));
+            if (state != null) {
+                const appState = JSON.parse(localStorage.getItem('tripsee_state'));
                 this.places = appState.places;
                 this.location = appState.location;
             };
@@ -138,7 +138,7 @@
                     this.loading = false;
 
                     // Save it to LocalStorage
-                    localStorage.setItem('state', JSON.stringify(state));
+                    localStorage.setItem('tripsee_state', JSON.stringify(state));
                 });       
             });           
         }
