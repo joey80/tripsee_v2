@@ -58,7 +58,7 @@
 
                 // Gets the weather from the location lat and lng
                 const url = 'https://api.darksky.net/forecast/';
-                const key = process.env.WEATHER_KEY;
+                const key = '0f17cf28d5077a6eaa100a5baed07ef0';
                 const proxy = 'https://cors-anywhere.herokuapp.com/';
 
                 axios.get(`${proxy}${url}${key}/${location.lat},${location.lng}`)
