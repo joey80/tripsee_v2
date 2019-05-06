@@ -75,7 +75,7 @@
         mounted() {
             eventBus.$on('newLocation', (location) => {
 
-                // Shows the loading animation
+                // Shows the loading animations
                 this.loading = true;
 
                 // Searches for events from the lat and lng of the city name or zipcode that was queried
