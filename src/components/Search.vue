@@ -46,7 +46,7 @@
 
                 // Gets the lat and lng of the city name or zipcode that was queried
                 const encodedAddress = encodeURIComponent(query);
-                const google_key = 'AIzaSyAJjn9fajSJUjnvGy8SKqF914tFqHM15kU';
+                const google_key = process.env.GOOGLE_KEY;
                 const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${google_key}`;
 
                 axios.get(geocodeUrl)

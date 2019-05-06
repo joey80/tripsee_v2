@@ -116,7 +116,7 @@
 
                 // Searches for businesses from the lat and lng of the city name or zipcode that was queried
                 const yelp_url = 'https://api.yelp.com/v3/businesses/search';
-                const yelp_token = 'OO7yjS5Re_tG1oieUdRCyvpbj2gbxiyDv6nZCBx803xeDXDRPFYQSz54CUGETUz-WV6PB-0Dvrc1DR9RX03sGu3pQsFE9Kwbb7rPGPehEwUoDYfNsBeLxl0mP6oEW3Yx';
+                const yelp_token = process.env.YELP_TOKEN;
                 const proxy = 'https://cors-anywhere.herokuapp.com/';
 
                 axios.get(`${proxy}${yelp_url}?&latitude=${location.lat}&longitude=${location.lng}&radius=5000&term=${this.locationType}`, {

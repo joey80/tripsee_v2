@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -9,6 +10,9 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'build.js'
+  },
+  node: {
+    fs: 'empty'
   },
   mode: 'production',
   optimization: {
@@ -75,6 +79,7 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   plugins: [
+    new Dotenv(),
     new VueLoaderPlugin(),
   ]
 }

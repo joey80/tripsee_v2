@@ -41,7 +41,6 @@
             if (state != null) {
                 const appState = JSON.parse(localStorage.getItem('tripsee_state'));
                 this.weather = appState.weather;
-                console.log('the weather state is: ', state);
             };
         },
         mounted() {
@@ -59,7 +58,7 @@
 
                 // Gets the weather from the location lat and lng
                 const url = 'https://api.darksky.net/forecast/';
-                const key = '0f17cf28d5077a6eaa100a5baed07ef0';
+                const key = process.env.WEATHER_KEY;
                 const proxy = 'https://cors-anywhere.herokuapp.com/';
 
                 axios.get(`${proxy}${url}${key}/${location.lat},${location.lng}`)
