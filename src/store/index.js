@@ -6,17 +6,20 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     eventState: {
-      events: null
+      events: null,
+      loading: false
     },
     placeState: {
-      places: null,
-      location: null
+      loading: false,
+      location: null,
+      places: null
     },
     searchState: {
-      query: null,
-      location: null
+      location: null,
+      query: null
     },
     weatherState: {
+      loading: false,
       weather: null
     }
   },
