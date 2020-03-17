@@ -9,6 +9,7 @@
   "prettier.semi": true,
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": true,
+  //"prettier.trailingComma": "all",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Default Dark+",
   "workbench.colorCustomizations": {
