@@ -102,7 +102,7 @@ export default {
       this.loading = true;
 
       // Searches for events from the lat and lng of the city name or zipcode that was queried
-      const token = `&app_key=${process.env.VUE_APP_EVENTS_API}`;
+      const token = `&app_key=${process.env.EVENTS_API}`;
       const endpoint = "http://api.eventful.com/rest/events/search?";
       const userLocation = `&where=${location.lat},${location.lng}&within=10`;
       const proxy = "https://cors-anywhere.herokuapp.com/";
