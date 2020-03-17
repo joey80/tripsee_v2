@@ -1,21 +1,36 @@
 <template>
   <div>
+    <!-- Has border bottom white dots -->
     <div class="logo-container">
       <div>
         <div>
-          <img src="../../assets/images/logo.png" class="logo" />
+          <img src="../../assets/images/logo.png" class="logo" @click="handleClick" />
         </div>
       </div>
       <span class="icon tripsee-menu" @click="handleClick">
         <i class="fas fa-bars"></i>
       </span>
     </div>
+    <!-- The two white circles on either side -->
     <div class="circle-container">
       <div class="left-circle"></div>
       <div class="right-circle"></div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    onClick: Function
+  },
+  methods: {
+    handleClick() {
+      return this.onClick();
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .logo-container {
