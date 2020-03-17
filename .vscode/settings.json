@@ -17,5 +17,6 @@
     "titleBar.activeBackground": "#3965b1",
     "titleBar.inactiveBackground": "#3965b1"
   },
-  "window.zoomLevel": 0
+  "window.zoomLevel": 0,
+  "git.ignoreLimitWarning": true
 }
