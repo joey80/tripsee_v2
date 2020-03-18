@@ -1,20 +1,26 @@
 <template>
   <section class="search__container">
-    <form v-on:submit.prevent="logQuery" autocomplete="off">
+    <form v-on:submit.prevent="handleQuery" autocomplete="off">
       <input v-model="query" class="search__input" placeholder="Enter A City Name Or A Zipcode" />
-      <!-- possible psuedo selector -->
-      <span class="search__icon" />
     </form>
   </section>
 </template>
 
 <script>
 export default {
-  components: {},
+  data() {
+    return {
+      query: ''
+    };
+  },
   props: {
     onClick: Function
   },
-  methods: {}
+  methods: {
+    handleQuery() {
+      return this.$store.commit('searchQuery', this.query);
+    }
+  }
 };
 </script>
 
@@ -22,10 +28,18 @@ export default {
 .search {
   &__container {
     margin-top: 10px;
-  }
 
-  &__icon {
-    transition: all 0.4s ease-in-out;
+    &::before {
+      background-image: url('../../assets/images/search-icon.svg');
+      background-size: contain;
+      bottom: 35px;
+      content: '';
+      height: 25px;
+      left: 20px;
+      position: absolute;
+      width: 25px;
+      z-index: 2;
+    }
   }
 
   &__input {
@@ -34,20 +48,26 @@ export default {
     box-shadow: none;
     color: #322c49;
     font-size: 1.1em;
+    min-height: 40px;
     padding: 6px 18px 3px 40px;
+    position: relative;
     transition: all 0.3s ease-in-out;
     width: 100%;
 
+    &::placeholder {
+      color: rgb(216, 216, 216);
+    }
+
     &:hover {
       border: 1px solid rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease-in-out;
       box-shadow: 0px 10px 15px 5px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease-in-out;
     }
 
     &:focus {
       border: 0;
-      outline: none;
       box-shadow: none;
+      outline: none;
     }
   }
 }

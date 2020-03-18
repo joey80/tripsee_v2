@@ -23,7 +23,12 @@ export default new Vuex.Store({
       weather: null
     }
   },
-  mutations: {},
+  mutations: {
+    searchQuery: (state, query) => {
+      console.log('you searched for', query);
+      state.searchState.query = query;
+    }
+  },
   actions: {},
   modules: {}
 });
