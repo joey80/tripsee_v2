@@ -20,7 +20,7 @@ export default {
 <style lang="scss">
 .hamburger {
   transform: translate(5px, -15px);
-  width: 30px;
+  width: 20px;
 
   &:hover {
     cursor: pointer;
