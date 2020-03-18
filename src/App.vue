@@ -1,9 +1,7 @@
 <template>
   <div class="app-container">
     <div class="body-container">
-      <div :class="{ move: isOpen }" class="sidebar">
-        Coming soon!
-      </div>
+      <trip-sidebar :isOpen="isOpen" />
       <template>
         <trip-header :onClick="handleClick" />
         <trip-search />
@@ -21,6 +19,7 @@ import Search from './components/Search/Search.vue';
 import Weather from './components/Weather/Weather.vue';
 import Places from './components/Places/Places.vue';
 import Events from './components/Events/Events.vue';
+import Sidebar from './components/Sidebar/Sidebar.vue';
 
 export default {
   components: {
@@ -28,7 +27,8 @@ export default {
     tripSearch: Search,
     tripWeather: Weather,
     tripPlaces: Places,
-    tripEvents: Events
+    tripEvents: Events,
+    tripSidebar: Sidebar
   },
   data() {
     return {
@@ -50,30 +50,14 @@ body {
   background-color: #f8f8f8;
   background-image: url('../src/assets/images/bg.jpg');
 }
-.sidebar {
-  position: absolute;
-  text-align: right;
-  padding: 30px;
-  top: 0;
-  left: 0;
-  z-index: 9;
-  width: 100%;
-  height: 100vh;
-  color: #fff;
-  background-color: #363636;
-  transform: translateX(-100%);
-  transition: all 0.5s ease-in-out;
-}
-.move {
-  transform: translateX(-30%);
-  transition: all 0.5s ease-in-out;
-}
+
 .body-container {
   padding: 10px;
   background-color: #e2e2e2;
   box-shadow: 0px 0px 59px -11px rgba(0, 0, 0, 0.55);
   position: relative;
 }
+
 .app-container {
   margin: 0 auto;
   max-width: 375px;
