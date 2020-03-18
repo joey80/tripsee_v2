@@ -1,7 +1,12 @@
 <template>
   <section class="search__container">
     <form v-on:submit.prevent="handleQuery" autocomplete="off">
-      <input v-model="query" class="search__input" placeholder="Enter A City Name Or A Zipcode" />
+      <input
+        v-model="query"
+        ref="searchInput"
+        class="search__input"
+        placeholder="Enter A City Name Or A Zipcode"
+      />
     </form>
   </section>
 </template>
@@ -18,6 +23,10 @@ export default {
   },
   methods: {
     handleQuery() {
+      const search = this.$refs.searchInput;
+      search.value = '';
+      search.blur();
+
       return this.$store.commit('searchQuery', this.query);
     }
   }
