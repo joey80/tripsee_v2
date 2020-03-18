@@ -45,6 +45,10 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Muli', sans-serif;
   background-color: #f8f8f8;

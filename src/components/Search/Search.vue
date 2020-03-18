@@ -30,10 +30,13 @@ export default {
 
   &__input {
     border: 1px solid transparent;
+    border-radius: 290486px;
     box-shadow: none;
     color: #322c49;
     font-size: 1.1em;
+    padding: 6px 18px 3px 40px;
     transition: all 0.3s ease-in-out;
+    width: 100%;
 
     &:hover {
       border: 1px solid rgba(0, 0, 0, 0.2);
