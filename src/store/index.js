@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { getGeocodePosition } from '../services/Google.service';
 
 Vue.use(Vuex);
 
@@ -24,11 +25,18 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    searchQuery: (state, query) => {
-      console.log('you searched for', query);
-      state.searchState.query = query;
+    updateSearch(state, newState) {
+      state.searchState = newState;
     }
   },
-  actions: {},
+  actions: {
+    async searchQuery(context, payload) {
+      const result = await getGeocodePosition(payload.query);
+      context.commit('updateSearch', { query: payload.query, location: result });
+
+      // // Save it to LocalStorage
+      // localStorage.setItem('tripsee_state', JSON.stringify(state));
+    }
+  },
   modules: {}
 });
