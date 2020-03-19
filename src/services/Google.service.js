@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 /**
- * getGeocodePosition
+ * getGeocodePosition - returns the lat and lng from a location lookup
  * @param query - either a name of a city or a zipcode
  */
 export const getGeocodePosition = async query => {
