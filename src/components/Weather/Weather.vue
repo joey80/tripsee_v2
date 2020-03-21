@@ -1,11 +1,13 @@
 <template>
   <section>
-    <span>{{ weatherState.loading }}</span>
-    <!-- <div v-if="loading" class="loading">
-      Loading weather
+    <template v-if="weatherState.loading === true">
       <trip-spinner />
-    </div>
-    <div v-else class="card">
+    </template>
+    <template v-else>
+      <span>{{ weatherState.weather }}</span>
+    </template>
+
+    <!-- <div v-else class="card">
       <div class="card-footer">
         <div class="card-footer-item dark">
           <img :src="`../src/assets/weather/'${icon}.png`" />
@@ -30,21 +32,19 @@
 
 <script>
 import { mapState } from 'vuex';
-// import Spinner from '../atoms/Spinner/Spinner.vue';
+import Spinner from '../atoms/Spinner/Spinner.vue';
 
 export default {
   components: {
-    // tripSpinner: Spinner
+    tripSpinner: Spinner
   },
-  computed: mapState(['weatherState']),
-  watch: {
-    weatherState(newValue, oldValue) {
-      console.log('weather state change', {
-        oldValue,
-        newValue
-      });
-    }
-  }
+  data() {
+    return {
+      isLoading: null,
+      weatherData: null
+    };
+  },
+  computed: mapState(['weatherState'])
 };
 </script>
 
