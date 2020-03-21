@@ -27,7 +27,7 @@ export default {
       search.value = '';
       search.blur();
 
-      return this.$store.dispatch('searchQuery', { query: this.query });
+      return this.$store.dispatch({ type: 'startApp', query: this.query });
     }
   }
 };

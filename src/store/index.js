@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { getGeocodePosition } from '../services/Google.service';
-import { saveToLocalStorage } from '../services/Storage.service';
 import { getWeatherData } from '../services/Weather.service';
+// import { saveToLocalStorage } from '../services/Storage.service';
 
 Vue.use(Vuex);
 
@@ -28,29 +28,32 @@ export default new Vuex.Store({
   },
   mutations: {
     updateSearch(state, newState) {
-      state.searchState = newState;
+      state.searchState = { ...state.searchState, ...newState };
     },
     updateWeather(state, newState) {
-      state.weatherState.weather = newState;
-    },
-    updateLoading(state, property, value) {
-      state[property].loading = value;
+      state.weatherState = { ...state.weatherState, ...newState };
     }
   },
   actions: {
     startApp(context, payload) {
-      context.commit('updateLoading', ('weatherState', true));
+      context.dispatch({ type: 'searchQuery', query: payload.query }).then(res => {
+        res.dispatch({ type: 'getWeather', res });
+        // res.dispatch({ type: 'getPlaces', res });
+        // res.dispatch({ type: 'getEvents', res });
+      });
     },
     async searchQuery(context, payload) {
       const result = await getGeocodePosition(payload.query);
       context.commit('updateSearch', { query: payload.query, location: result });
-      context.dispatch('getWeather', { lat: result.lat, lng: result.lng });
+      return context;
     },
-    async getWeather(context, payload) {
-      const result = await getWeatherData(payload);
-      console.log('res from weather', result);
-      context.commit('updateWeather', result);
-      saveToLocalStorage(this.state);
+    async getWeather(context) {
+      context.commit('updateWeather', { loading: true });
+      const result = await getWeatherData({
+        lat: context.state.searchState.location.lat,
+        lng: context.state.searchState.location.lng
+      });
+      return context.commit('updateWeather', { loading: false, weather: result });
     }
   },
   modules: {}
