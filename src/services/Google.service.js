@@ -17,5 +17,3 @@ export const getGeocodePosition = async query => {
     cityName: result.data.results[0].formatted_address.split(',')[0]
   };
 };
-
-export const somethingElse = () => null;

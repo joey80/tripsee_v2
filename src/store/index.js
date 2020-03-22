@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist';
 import { getGeocodePosition } from '../services/Google.service';
 import { getWeatherData } from '../services/Weather.service';
-// import { saveToLocalStorage } from '../services/Storage.service';
 
 Vue.use(Vuex);
 
@@ -56,5 +56,6 @@ export default new Vuex.Store({
       return context.commit('updateWeather', { loading: false, weather: result });
     }
   },
-  modules: {}
+  modules: {},
+  plugins: [new VuexPersistence().plugin]
 });

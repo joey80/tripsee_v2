@@ -41,11 +41,10 @@ export default {
     &::before {
       background-image: url('../../assets/images/search-icon.svg');
       background-size: contain;
-      bottom: 35px;
       content: '';
       height: 25px;
-      left: 20px;
       position: absolute;
+      transform: translate(8px, 8px);
       width: 25px;
       z-index: 2;
     }

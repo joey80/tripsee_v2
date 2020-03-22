@@ -16,5 +16,3 @@ export const getWeatherData = async ({ lat, lng }) => {
     forecast: result.data.daily.summary
   };
 };
-
-export const somethingElse = () => null;
