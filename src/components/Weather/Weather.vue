@@ -4,6 +4,7 @@
       <trip-spinner />
     </template>
     <template v-else>
+      <trip-title>Weather In</trip-title>
       <trip-card>
         <template slot="cardContent">
           <div class="weather__content">
@@ -15,10 +16,7 @@
             </div>
             <div class="weather__content__right">
               <span class="weather__temp">{{ Math.floor(weatherState.weather.temp) }}&#176;</span>
-              <span class="name">
-                Currently {{ weatherState.weather.description }}<br />
-                in <strong>{{ searchState.location.cityName }}</strong>
-              </span>
+              <span class="name"> Currently {{ weatherState.weather.description }} </span>
             </div>
           </div>
         </template>
@@ -34,11 +32,13 @@
 import { mapState } from 'vuex';
 import Spinner from '../atoms/Spinner/Spinner.vue';
 import Card from '../atoms/Card/Card.vue';
+import Title from '../atoms/Title/Title.vue';
 
 export default {
   components: {
     tripCard: Card,
-    tripSpinner: Spinner
+    tripSpinner: Spinner,
+    tripTitle: Title
   },
   data() {
     return {
@@ -46,7 +46,7 @@ export default {
       weatherData: null
     };
   },
-  computed: mapState(['weatherState', 'searchState'])
+  computed: mapState(['weatherState'])
 };
 </script>
 
@@ -59,6 +59,7 @@ export default {
     &__left {
       align-items: center;
       background-color: #5a9216;
+      border-top-left-radius: 4px;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -69,6 +70,7 @@ export default {
 
     &__right {
       background-color: #8bc34a;
+      border-top-right-radius: 4px;
       color: #000;
       display: flex;
       flex-direction: column;

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
 import { getGeocodePosition } from '../services/Google.service';
 import { getWeatherData } from '../services/Weather.service';
+import { getYelpPlaces } from '../services/Places.service';
 
 Vue.use(Vuex);
 
@@ -14,7 +15,6 @@ export default new Vuex.Store({
     },
     placeState: {
       loading: false,
-      location: null,
       places: null
     },
     searchState: {
@@ -32,13 +32,16 @@ export default new Vuex.Store({
     },
     updateWeather(state, newState) {
       state.weatherState = { ...state.weatherState, ...newState };
+    },
+    updatePlaces(state, newState) {
+      state.placeState = { ...state.placeState, ...newState };
     }
   },
   actions: {
     startApp(context, payload) {
       context.dispatch({ type: 'searchQuery', query: payload.query }).then(res => {
         res.dispatch({ type: 'getWeather', res });
-        // res.dispatch({ type: 'getPlaces', res });
+        res.dispatch({ type: 'getPlaces', res });
         // res.dispatch({ type: 'getEvents', res });
       });
     },
@@ -54,6 +57,14 @@ export default new Vuex.Store({
         lng: context.state.searchState.location.lng
       });
       return context.commit('updateWeather', { loading: false, weather: result });
+    },
+    async getPlaces(context) {
+      context.commit('updatePlaces', { loading: true });
+      const result = await getYelpPlaces({
+        lat: context.state.searchState.location.lat,
+        lng: context.state.searchState.location.lng
+      });
+      return context.commit('updatePlaces', { loading: false, places: result });
     }
   },
   modules: {},
