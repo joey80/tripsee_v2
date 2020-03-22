@@ -16,6 +16,12 @@ export default {
   border-radius: 4px;
   color: #fff;
   font-size: 13px;
+  margin-right: 5px;
   padding: 4px 12px;
+
+  &--small {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
 }
 </style>

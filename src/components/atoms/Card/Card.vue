@@ -27,7 +27,7 @@ export default {
   border-radius: 4px;
   box-shadow: 0px 8px 20px -5px rgba(0, 0, 0, 0.2);
   color: #4a4a4a;
-  margin-top: 10px;
+  margin: 10px 0 20px 0;
 
   &__footer {
     padding: 8px;
