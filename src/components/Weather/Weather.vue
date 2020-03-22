@@ -5,11 +5,7 @@
     </template>
     <template v-else>
       <trip-card>
-        <!-- <template slot="cardHeader">
-          what is this?
-        </template> -->
         <template slot="cardContent">
-          <!-- {{ weatherState.weather }} -->
           <div class="weather__content">
             <div class="weather__content__left">
               <img
@@ -17,7 +13,13 @@
                 class="weather__image"
               />
             </div>
-            <div class="weather__content__right">This is something on the right</div>
+            <div class="weather__content__right">
+              <span class="weather__temp">{{ Math.floor(weatherState.weather.temp) }}&#176;</span>
+              <span class="name">
+                Currently {{ weatherState.weather.description }}<br />
+                in <strong>{{ searchState.location.cityName }}</strong>
+              </span>
+            </div>
           </div>
         </template>
         <template slot="cardFooter">
@@ -25,27 +27,6 @@
         </template>
       </trip-card>
     </template>
-
-    <!-- <div v-else class="card">
-      <div class="card-footer">
-        <div class="card-footer-item dark">
-          <img :src="`../src/assets/weather/'${icon}.png`" />
-        </div>
-        <div class="card-footer-item light">
-          <div class="item-center">
-            <span class="temp">{{ temp }}&#176;</span>
-            <span class="name"
-              >Currently {{ description }}<br />in <strong>{{ name }}</strong></span
-            >
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-footer-item">
-          <p class="forecast">{{ forecast }}</p>
-        </div>
-      </div>
-    </div> -->
   </section>
 </template>
 
@@ -65,7 +46,7 @@ export default {
       weatherData: null
     };
   },
-  computed: mapState(['weatherState'])
+  computed: mapState(['weatherState', 'searchState'])
 };
 </script>
 
@@ -82,8 +63,8 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 20px;
-      width: 40%;
+      padding: 5px;
+      width: 35%;
     }
 
     &__right {
@@ -93,7 +74,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       text-align: center;
-      width: 60%;
+      width: 65%;
     }
   }
 
@@ -106,6 +87,11 @@ export default {
 
   &__image {
     max-width: 80%;
+  }
+
+  &__temp {
+    font-size: 50px;
+    font-weight: bold;
   }
 }
 </style>
