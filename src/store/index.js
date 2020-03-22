@@ -4,6 +4,7 @@ import VuexPersistence from 'vuex-persist';
 import { getGeocodePosition } from '../services/Google.service';
 import { getWeatherData } from '../services/Weather.service';
 import { getYelpPlaces } from '../services/Places.service';
+import { getEventfulEvents } from '../services/Events.service';
 
 Vue.use(Vuex);
 
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     updatePlaces(state, newState) {
       state.placeState = { ...state.placeState, ...newState };
+    },
+    updateEvents(state, newState) {
+      state.eventState = { ...state.eventState, ...newState };
     }
   },
   actions: {
@@ -42,7 +46,7 @@ export default new Vuex.Store({
       context.dispatch({ type: 'searchQuery', query: payload.query }).then(res => {
         res.dispatch({ type: 'getWeather', res });
         res.dispatch({ type: 'getPlaces', res });
-        // res.dispatch({ type: 'getEvents', res });
+        res.dispatch({ type: 'getEvents', res });
       });
     },
     async searchQuery(context, payload) {
@@ -65,6 +69,14 @@ export default new Vuex.Store({
         lng: context.state.searchState.location.lng
       });
       return context.commit('updatePlaces', { loading: false, places: result });
+    },
+    async getEvents(context) {
+      context.commit('updateEvents', { loading: true });
+      const result = await getEventfulEvents({
+        lat: context.state.searchState.location.lat,
+        lng: context.state.searchState.location.lng
+      });
+      return context.commit('updateEvents', { loading: false, events: result.search.events.event });
     }
   },
   modules: {},
