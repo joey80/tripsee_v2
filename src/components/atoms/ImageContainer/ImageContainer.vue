@@ -16,6 +16,9 @@ export default {
     return {
       placeholder: 'http://via.placeholder.com/350x350'
     };
+  },
+  mounted() {
+    console.log('bgImage', this.bgImage);
   }
 };
 </script>
@@ -27,7 +30,9 @@ export default {
   height: 270px;
 
   &__image {
+    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     width: 100%;
     height: 100%;
   }

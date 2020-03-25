@@ -12,7 +12,9 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'comma-dangle': ['error', 'never'],
     'arrow-parens': ['error', 'as-needed'],
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+    'no-underscore-dangle': 'off',
+    'operator-linebreak': 'off'
   },
   overrides: [
     {
