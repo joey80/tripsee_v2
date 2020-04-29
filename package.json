@@ -5,6 +5,11 @@
   "engines": {
     "node": "12.16.x"
   },
+  "release": {
+    "branches": [
+      "release"
+    ]
+  },
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
