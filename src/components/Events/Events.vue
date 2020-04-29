@@ -42,7 +42,7 @@ export default {
     tripSpinner: Spinner,
     tripTitle: Title,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
   data() {
     return {
@@ -51,9 +51,9 @@ export default {
         slidesPerView: 'auto',
         pagination: {
           el: '.swiper-pagination',
-          clickable: true
-        }
-      }
+          clickable: true,
+        },
+      },
     };
   },
   methods: {
@@ -67,11 +67,11 @@ export default {
         event.image.medium.url._text) !== undefined
         ? event.image.medium.url._text
         : null;
-    }
+    },
   },
   computed: {
-    ...mapState(['eventState'])
-  }
+    ...mapState(['eventState']),
+  },
 };
 </script>
 
