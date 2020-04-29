@@ -1,6 +1,6 @@
 {
   "name": "tripsee",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "private": true,
   "engines": {
     "node": "12.16.x"
@@ -14,7 +14,8 @@
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "axios": "^0.18.1",
@@ -40,6 +41,11 @@
     "eslint-plugin-vue": "^6.1.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "semantic-release": "^17.0.7",
     "vue-template-compiler": "^2.6.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joey80/tripsee_v2.git"
   }
 }
