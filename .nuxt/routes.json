@@ -3,7 +3,6 @@
     "name": "index",
     "path": "/",
     "component": "/Users/joeyleger/Desktop/apps/personal/tripsee_v2/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_235082af"
+    "chunkName": "pages/index"
   }
 ]
