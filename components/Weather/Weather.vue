@@ -55,7 +55,6 @@ export default {
   },
   watch: {
     location: async function(newVal, oldVal) {
-      console.log({ newVal, oldVal });
       if (oldVal.lat !== newVal.lat) {
         const { lat, lng } = newVal;
         this.isLoading = true;
