@@ -20,9 +20,15 @@
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
-    "nuxt": "^2.15.2"
+    "nuxt": "^2.15.2",
+    "vue-awesome-swiper": "^4.1.1",
+    "xml-js": "^1.6.11"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "fibers": "^5.0.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/joey80/tripsee_v2.git"

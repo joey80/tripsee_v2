@@ -26,6 +26,28 @@ app.all('/google/:location', async (req, res) => {
   }
 });
 
+// Weather
+app.all('/weather', async (req, res) => {
+  const { lat, lng } = req.query;
+  const weatherEndpoint = `https://api.darksky.net/forecast/${process.env.VUE_APP_WEATHER_API_KEY}/${lat},${lng}`;
+  try {
+    const result = await axios.get(weatherEndpoint);
+    res
+      .json({
+        temp: result.data.currently.temperature,
+        description: result.data.currently.summary,
+        icon: result.data.currently.icon,
+        forecast: result.data.daily.summary,
+      })
+      .end();
+  } catch (error) {
+    res
+      .status(500)
+      .send('GET failed from DarkSky')
+      .end();
+  }
+});
+
 // Yelp
 app.all('/yelp', async (req, res) => {
   const { lat, lng } = req.query;

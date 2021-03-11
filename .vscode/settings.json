@@ -1,5 +1,4 @@
 {
-  //"javascript.implicitProjectConfig.checkJs": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -9,8 +8,7 @@
   "prettier.semi": true,
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": true,
-  //"prettier.trailingComma": "all",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "workbench.colorTheme": "Default Dark+",
   "workbench.colorCustomizations": {
     "titleBar.activeForeground": "#fff",
