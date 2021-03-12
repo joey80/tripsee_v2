@@ -13,6 +13,7 @@
         </form>
       </section>
       <trip-weather :cityName="cityName" :location="{ lat, lng }" />
+      <trip-places :cityName="cityName" :location="{ lat, lng }" />
     </div>
   </div>
 </template>
@@ -20,11 +21,13 @@
 <script>
 import axios from 'axios';
 import Header from '../components/Header/Header';
+import Places from '../components/Places/Places';
 import Weather from '../components/Weather/Weather';
 
 export default {
   components: {
     tripHeader: Header,
+    tripPlaces: Places,
     tripWeather: Weather,
   },
   data() {
@@ -39,7 +42,6 @@ export default {
     async handleClick() {
       const res = await axios.get('/google/28031');
       // const res = await axios.get('/yelp?lat=35.472468&lng=-80.8875861');
-      // const res = await axios.get('/weather?lat=35.472468&lng=-80.8875861');
       console.log(res.data);
     },
     async handleQuery() {

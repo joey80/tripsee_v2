@@ -1,11 +1,16 @@
 <template>
-  <span className="badge title">
+  <trip-badge className="title">
     <slot /> <span class="title--primary">{{ cityName }}</span>
-  </span>
+  </trip-badge>
 </template>
 
 <script>
+import Badge from '../Badge/Badge';
+
 export default {
+  components: {
+    tripBadge: Badge,
+  },
   props: {
     cityName: String,
   },
@@ -13,20 +18,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.badge {
-  background-color: #323232;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 13px;
-  margin-right: 5px;
-  padding: 4px 12px;
-
-  &--small {
-    font-size: 11px;
-    padding: 4px 10px;
-  }
-}
-
 .title {
   display: inline-block;
   margin-top: 20px;
