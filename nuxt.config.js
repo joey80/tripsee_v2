@@ -7,7 +7,5 @@ export default {
       },
     ],
   },
-  mode: 'universal',
   serverMiddleware: ['~/serverMiddleware/api'],
-  target: 'static',
 };
