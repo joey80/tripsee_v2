@@ -8,4 +8,5 @@ export default {
     ],
   },
   serverMiddleware: ['~/serverMiddleware/api'],
+  target: 'static',
 };
