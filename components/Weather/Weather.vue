@@ -4,7 +4,7 @@
       <trip-spinner />
     </template>
     <template v-if="weatherData && !isLoading">
-      <trip-title v-bind:cityName="cityName">Weather In</trip-title>
+      <trip-title :cityName="cityName">Weather In</trip-title>
       <trip-card-section>
         <template slot="cardContent">
           <div class="weather__content">

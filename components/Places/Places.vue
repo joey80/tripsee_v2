@@ -1,47 +1,56 @@
 <template>
-  <section>
+  <section class="places">
     <template v-if="isLoading">
       <trip-spinner />
     </template>
-    <template v-else-if="placeState.places">
-      <trip-title v-bind:cityName="cityName">Places To Eat In</trip-title>
+    <template v-if="placesData && !isLoading">
+      <trip-title :cityName="cityName">Places To Eat In</trip-title>
       <swiper :options="swiperOption">
-        <swiper-slide v-for="place in placeState.places" :key="place.id">
-          <trip-card-section :title="place.name">
+        <swiper-slide
+          v-for="{
+            categories,
+            display_phone,
+            id,
+            image_url,
+            location,
+            name,
+            rating,
+            review_count,
+          } in placesData"
+          :key="id"
+        >
+          <trip-card-section :title="name">
             <template slot="cardHeader">
               <div class="places__header__container">
                 <div class="places__header__left">
                   <img
-                    :src="require(`../../assets/images/yelp/${place.rating}.png`)"
+                    :src="require(`~/assets/images/yelp/${rating}.png`)"
                     class="places__rating"
                   />
-                  Based off of {{ place.review_count }} reviews
+                  Based off of {{ review_count }} reviews
                 </div>
                 <div class="places__header__right">
-                  <img
-                    :src="require('../../assets/images/yelp/logo.png')"
-                    class="places__yelp-logo"
-                  />
+                  <img :src="require('~/assets/images/yelp/logo.png')" class="places__yelp-logo" />
                 </div>
               </div>
             </template>
             <template slot="cardContent">
-              <trip-image-container :bgImage="place.image_url" />
+              <trip-image-container :bgImage="image_url" />
             </template>
             <template slot="cardFooter">
               Tags:
-              <trip-badge v-if="place.categories[0]" className="badge--small">
-                {{ place.categories[0].title }}
+              <trip-badge v-if="categories[0]" className="badge--small">
+                {{ categories[0].title }}
               </trip-badge>
-              <trip-badge v-if="place.categories[1]" className="badge--small">
-                {{ place.categories[1].title }}
+              <trip-badge v-if="categories[1]" className="badge--small">
+                {{ categories[1].title }}
               </trip-badge>
               <div class="places__address">
                 <span class="places__address--small">
-                  {{ place.display_phone }}
+                  {{ display_phone }}
                 </span>
-                {{ place.location.display_address[0] }}<br />
-                {{ place.location.display_address[1] }}
+                {{ location.display_address[0] }}<br />
+                {{ location.display_address[1] }}
               </div>
             </template>
           </trip-card-section>
@@ -52,17 +61,20 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import Badge from '../Badge/Badge';
 import CardSection from '../CardSection/CardSection';
-import ImageContainer from '../atoms/ImageContainer/ImageContainer.vue';
+import ImageContainer from '../ImageContainer/ImageContainer';
 import Spinner from '../Spinner/Spinner';
 import Title from '../Title/Title';
-import 'swiper/css/swiper.css';
+import 'swiper/swiper.scss';
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    tripBadge: Badge,
     tripCardSection: CardSection,
     tripImageContainer: ImageContainer,
     tripSpinner: Spinner,
@@ -89,11 +101,26 @@ export default {
       },
     };
   },
+  watch: {
+    location: async function(newVal, oldVal) {
+      if (oldVal.lat !== newVal.lat) {
+        const { lat, lng } = newVal;
+        this.isLoading = true;
+        const res = await axios.get(`/yelp?lat=${lat}&lng=${lng}`);
+        if (res) this.isLoading = false;
+        this.placesData = res.data;
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .places {
+  &:hover {
+    cursor: pointer;
+  }
+
   &__address {
     margin-top: 20px;
 
@@ -104,6 +131,7 @@ export default {
       padding-bottom: 10px;
     }
   }
+
   &__header {
     &__container {
       display: flex;
