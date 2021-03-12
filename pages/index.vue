@@ -39,11 +39,6 @@ export default {
     };
   },
   methods: {
-    async handleClick() {
-      const res = await axios.get('/google/28031');
-      // const res = await axios.get('/yelp?lat=35.472468&lng=-80.8875861');
-      console.log(res.data);
-    },
     async handleQuery() {
       const search = this.$refs.searchInput;
       search.value = '';
