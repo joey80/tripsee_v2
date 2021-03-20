@@ -16,10 +16,11 @@
             name,
             rating,
             review_count,
+            url,
           } in placesData"
           :key="id"
         >
-          <trip-card-section :title="name">
+          <trip-card-section :title="name" :url="url">
             <template slot="cardHeader">
               <div class="places__header__container">
                 <div class="places__header__left">

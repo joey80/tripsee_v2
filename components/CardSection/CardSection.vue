@@ -1,7 +1,9 @@
 <template>
   <div class="card">
     <div v-if="$slots.cardHeader" class="card__header">
-      <span v-if="title" class="card__title">{{ title }}</span>
+      <a :href="url" target="_blank">
+        <span v-if="title" class="card__title">{{ title }}</span>
+      </a>
       <slot name="cardHeader" />
     </div>
     <div class="card__content">
@@ -17,6 +19,7 @@
 export default {
   props: {
     title: String,
+    url: String,
   },
 };
 </script>
@@ -29,6 +32,11 @@ export default {
   color: #4a4a4a;
   margin: 10px 0 20px 0;
   min-height: 217px;
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
 
   &__footer {
     padding: 8px;
@@ -43,6 +51,10 @@ export default {
     display: block;
     font-size: 19px;
     font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 </style>
