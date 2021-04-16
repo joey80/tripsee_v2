@@ -50,8 +50,11 @@
                 <span class="places__address--small">
                   {{ display_phone }}
                 </span>
-                {{ location.display_address[0] }}<br />
-                {{ location.display_address[1] }}
+                <span>
+                  <template v-for="(item, index) in location.display_address">
+                    {{ item }}<br :key="index" />
+                  </template>
+                </span>
               </div>
             </template>
           </trip-card-section>
