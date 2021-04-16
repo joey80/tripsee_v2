@@ -20,7 +20,7 @@
           } in placesData"
           :key="id"
         >
-          <trip-card-section :title="name" :url="url">
+          <trip-card-section :title="name" :url="url" class="places__card">
             <template slot="cardHeader">
               <div class="places__header__container">
                 <div class="places__header__left">
@@ -140,6 +140,10 @@ export default {
       font-weight: bold;
       padding-bottom: 10px;
     }
+  }
+
+  &__card {
+    min-height: 530px;
   }
 
   &__header {
