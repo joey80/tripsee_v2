@@ -40,12 +40,13 @@
             </template>
             <template slot="cardFooter">
               Tags:
-              <trip-badge v-if="categories[0]" className="badge--small">
-                {{ categories[0].title }}
-              </trip-badge>
-              <trip-badge v-if="categories[1]" className="badge--small">
-                {{ categories[1].title }}
-              </trip-badge>
+              <span class="places__tags">
+                <template v-for="({ title }, index) in limitedCategory(categories)">
+                  <trip-badge className="badge--small" :key="index">
+                    {{ title }}
+                  </trip-badge>
+                </template>
+              </span>
               <div class="places__address">
                 <span class="places__address--small">
                   {{ display_phone }}
@@ -89,6 +90,11 @@ export default {
     location: {
       lat: Number,
       lng: Number,
+    },
+  },
+  methods: {
+    limitedCategory(arr) {
+      return arr.slice(0, 3);
     },
   },
   data() {
@@ -154,6 +160,10 @@ export default {
     display: block;
     max-width: 40%;
     padding-bottom: 10px;
+  }
+
+  &__tags {
+    white-space: nowrap;
   }
 
   &__yelp-logo {
