@@ -20,7 +20,7 @@
           } in placesData"
           :key="id"
         >
-          <trip-card-section :title="name" :url="url">
+          <trip-card-section :title="name" :url="url" class="places__card">
             <template slot="cardHeader">
               <div class="places__header__container">
                 <div class="places__header__left">
@@ -40,18 +40,22 @@
             </template>
             <template slot="cardFooter">
               Tags:
-              <trip-badge v-if="categories[0]" className="badge--small">
-                {{ categories[0].title }}
-              </trip-badge>
-              <trip-badge v-if="categories[1]" className="badge--small">
-                {{ categories[1].title }}
-              </trip-badge>
+              <span class="places__tags">
+                <template v-for="({ title }, index) in limitedCategory(categories)">
+                  <trip-badge className="badge--small" :key="index">
+                    {{ title }}
+                  </trip-badge>
+                </template>
+              </span>
               <div class="places__address">
                 <span class="places__address--small">
                   {{ display_phone }}
                 </span>
-                {{ location.display_address[0] }}<br />
-                {{ location.display_address[1] }}
+                <span>
+                  <template v-for="(item, index) in location.display_address">
+                    {{ item }}<br :key="index" />
+                  </template>
+                </span>
               </div>
             </template>
           </trip-card-section>
@@ -86,6 +90,11 @@ export default {
     location: {
       lat: Number,
       lng: Number,
+    },
+  },
+  methods: {
+    limitedCategory(arr) {
+      return arr.slice(0, 3);
     },
   },
   data() {
@@ -133,6 +142,10 @@ export default {
     }
   }
 
+  &__card {
+    min-height: 530px;
+  }
+
   &__header {
     &__container {
       display: flex;
@@ -151,6 +164,10 @@ export default {
     display: block;
     max-width: 40%;
     padding-bottom: 10px;
+  }
+
+  &__tags {
+    white-space: nowrap;
   }
 
   &__yelp-logo {
